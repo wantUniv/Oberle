@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.5, user-scalable=yes">
     <meta name="description" content="江西欧伯乐建材科技有限公司 - 专业门窗解决方案提供商，致力于为客户提供优质的门窗产品和服务">
     <meta name="keywords" content="门窗,建材,系统门窗,断桥铝,智能门窗,江西,欧伯乐">
-    <meta name="author" content="江西卢博建材科技有限公司">
+    <meta name="author" content="江西欧伯乐建材科技有限公司">
     <meta name="robots" content="index, follow">
     
     <!-- iOS Safari 兼容性 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="卢博建材">
+    <meta name="apple-mobile-web-app-title" content="欧伯乐建材">
     
     <!-- Android Chrome 兼容性 -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -24,16 +24,92 @@
     <!-- 防止电话号码自动识别 -->
     <meta name="format-detection" content="telephone=no">
     
-    <title>江西卢博建材科技有限公司 - 专业建材解决方案</title>
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://shop305110886.taobao.com https://shizhix.1688.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <title>江西欧伯乐建材科技有限公司 - 专业建材解决方案</title>
     
     <!-- 预加载关键资源 -->
     <link rel="preload" href="styles.css" as="style">
     <link rel="preload" href="script.js" as="script">
+     <link rel="preload" href="images/lunbotu (1).jpg" as="image">
+     <link rel="preload" href="images/gongsi.jpg" as="image">
     
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
     
-    <!-- Fallback for Font Awesome -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.svg">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="江西欧伯乐建材科技有限公司 - 专业门窗定制">
+    <meta property="og:description" content="江西欧伯乐建材科技有限公司专业从事门窗定制，提供高品质铝合金门窗、断桥铝门窗等产品，专业安装，质量保证。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/gongsi.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="江西欧伯乐建材科技有限公司 - 专业门窗定制">
+    <meta name="twitter:description" content="江西欧伯乐建材科技有限公司专业从事门窗定制，提供高品质铝合金门窗、断桥铝门窗等产品，专业安装，质量保证。">
+    <meta name="twitter:image" content="images/gongsi.jpg">
+     
+     <!-- Structured Data -->
+     <script type="application/ld+json">
+     {
+       "@context": "https://schema.org",
+       "@type": "LocalBusiness",
+       "name": "江西欧伯乐建材科技有限公司",
+       "description": "专业从事门窗定制，提供高品质铝合金门窗、断桥铝门窗等产品，专业安装，质量保证。",
+       "url": "https://www.oberle-jiancai.com",
+       "telephone": "+86-138-0000-0000",
+       "address": {
+         "@type": "PostalAddress",
+         "addressLocality": "南昌市",
+         "addressRegion": "江西省",
+         "addressCountry": "CN"
+       },
+       "geo": {
+         "@type": "GeoCoordinates",
+         "latitude": "28.6820",
+         "longitude": "115.8581"
+       },
+       "openingHours": "Mo-Su 08:00-18:00",
+       "priceRange": "$$",
+       "image": "images/gongsi.jpg",
+       "sameAs": [
+         "https://shop305110886.taobao.com",
+         "https://shizhix.1688.com"
+       ],
+       "hasOfferCatalog": {
+         "@type": "OfferCatalog",
+         "name": "门窗产品目录",
+         "itemListElement": [
+           {
+             "@type": "Offer",
+             "itemOffered": {
+               "@type": "Product",
+               "name": "铝合金门窗",
+               "description": "高品质铝合金门窗，采用优质铝材和五金配件"
+             }
+           },
+           {
+             "@type": "Offer",
+             "itemOffered": {
+               "@type": "Product",
+               "name": "断桥铝门窗",
+               "description": "节能环保的断桥铝门窗，具有优异的隔热性能"
+             }
+           }
+         ]
+       }
+     }
+     </script>
+     
+     <!-- Fallback for Font Awesome -->
     <noscript>
         <style>
             .fa, .fas, .far, .fab {
@@ -51,21 +127,27 @@
     <div id="particles-js"></div>
     
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="主导航">
         <div class="nav-container">
             <div class="logo">
                 <h2>欧伯乐系统门窗</h2>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home">首页</a></li>
-                <li><a href="#products">选材与售后</a></li>
-                <li><a href="#about">关于我们</a></li>
-                <li><a href="#cases">工程案例</a></li>
-                <li><a href="#franchise">招商加盟</a></li>
-                <li><a href="#purchase">如何购买</a></li>
-                <li><a href="#contact">联系我们</a></li>
+                <li><a href="#home" data-zh="首页" data-en="Home">首页</a></li>
+                <li><a href="#products" data-zh="选材与售后" data-en="Materials & Service">选材与售后</a></li>
+                <li><a href="#about" data-zh="关于我们" data-en="About Us">关于我们</a></li>
+                <li><a href="#cases" data-zh="工程案例" data-en="Projects">工程案例</a></li>
+                <li><a href="#franchise" data-zh="招商加盟" data-en="Franchise">招商加盟</a></li>
+                <li><a href="#purchase" data-zh="如何购买" data-en="How to Buy">如何购买</a></li>
+                <li><a href="#contact" data-zh="联系我们" data-en="Contact">联系我们</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="language-switcher">
+                <button id="langBtn" class="lang-btn" onclick="toggleLanguage()" aria-label="切换语言">
+                    <i class="fas fa-globe"></i>
+                    <span id="langText">EN</span>
+                </button>
+            </div>
+            <div class="hamburger" aria-label="切换导航菜单" role="button" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -74,76 +156,76 @@
     </nav>
 
     <!-- 主轮播图区域 -->
-    <section id="home" class="hero-section">
+    <section id="home" class="hero-section" role="banner" aria-label="首页横幅">
         <div class="hero-slider">
             <div class="slide active" style="background-image: url('images/lunbotu (1).jpg')">
                 <div class="slide-content">
-                    <h1>江西欧伯乐建材科技有限公司</h1>
-                    <p>专业提供高品质建材解决方案，打造美好生活空间</p>
-                    <button class="cta-button">了解更多</button>
+                    <h1 data-zh="江西欧伯乐建材科技有限公司" data-en="Jiangxi Oberle Building Materials Technology Co., Ltd.">江西欧伯乐建材科技有限公司</h1>
+                    <p data-zh="专业提供高品质建材解决方案，打造美好生活空间" data-en="Professional high-quality building materials solutions, creating beautiful living spaces">专业提供高品质建材解决方案，打造美好生活空间</p>
+                    <button class="cta-button" data-zh="了解更多" data-en="Learn More">了解更多</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (2).jpg')">
                 <div class="slide-content">
-                    <h1>创新科技 品质保证</h1>
-                    <p>采用先进技术，为您提供优质的建材产品和服务</p>
-                    <button class="cta-button">查看产品</button>
+                    <h1 data-zh="创新科技 品质保证" data-en="Innovation Technology & Quality Assurance">创新科技 品质保证</h1>
+                    <p data-zh="采用先进技术，为您提供优质的建材产品和服务" data-en="Using advanced technology to provide you with high-quality building materials and services">采用先进技术，为您提供优质的建材产品和服务</p>
+                    <button class="cta-button" data-zh="查看产品" data-en="View Products">查看产品</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (3).jpg')">
                 <div class="slide-content">
-                    <h1>专业团队 贴心服务</h1>
-                    <p>经验丰富的专业团队，为您提供一站式建材解决方案</p>
-                    <button class="cta-button">联系我们</button>
+                    <h1 data-zh="专业团队 贴心服务" data-en="Professional Team & Caring Service">专业团队 贴心服务</h1>
+                    <p data-zh="经验丰富的专业团队，为您提供一站式建材解决方案" data-en="Experienced professional team providing one-stop building materials solutions">经验丰富的专业团队，为您提供一站式建材解决方案</p>
+                    <button class="cta-button" data-zh="联系我们" data-en="Contact Us">联系我们</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (4).jpg')">
                 <div class="slide-content">
-                    <h1>优质材料 精工制造</h1>
-                    <p>严选优质原材料，精工制造每一件产品</p>
-                    <button class="cta-button">了解更多</button>
+                    <h1 data-zh="优质材料 精工制造" data-en="Quality Materials & Precision Manufacturing">优质材料 精工制造</h1>
+                    <p data-zh="严选优质原材料，精工制造每一件产品" data-en="Carefully selected quality raw materials, precision manufacturing of every product">严选优质原材料，精工制造每一件产品</p>
+                    <button class="cta-button" data-zh="了解更多" data-en="Learn More">了解更多</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (5).png')">
                 <div class="slide-content">
-                    <h1>绿色环保 健康生活</h1>
-                    <p>坚持绿色环保理念，为您打造健康生活环境</p>
-                    <button class="cta-button">查看产品</button>
+                    <h1 data-zh="绿色环保 健康生活" data-en="Green & Eco-friendly Healthy Living">绿色环保 健康生活</h1>
+                    <p data-zh="坚持绿色环保理念，为您打造健康生活环境" data-en="Adhering to green environmental protection concepts, creating a healthy living environment for you">坚持绿色环保理念，为您打造健康生活环境</p>
+                    <button class="cta-button" data-zh="查看产品" data-en="View Products">查看产品</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (6).png')">
                 <div class="slide-content">
-                    <h1>工程案例 品质见证</h1>
-                    <p>众多成功案例，见证我们的专业品质</p>
-                    <button class="cta-button">查看案例</button>
+                    <h1 data-zh="工程案例 品质见证" data-en="Project Cases & Quality Witness">工程案例 品质见证</h1>
+                    <p data-zh="众多成功案例，见证我们的专业品质" data-en="Numerous successful cases witness our professional quality">众多成功案例，见证我们的专业品质</p>
+                    <button class="cta-button" data-zh="查看案例" data-en="View Cases">查看案例</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (7).jpg')">
                 <div class="slide-content">
-                    <h1>售后保障 安心选择</h1>
-                    <p>完善的售后服务体系，让您选择更安心</p>
-                    <button class="cta-button">了解服务</button>
+                    <h1 data-zh="售后保障 安心选择" data-en="After-sales Guarantee & Peace of Mind">售后保障 安心选择</h1>
+                    <p data-zh="完善的售后服务体系，让您选择更安心" data-en="Perfect after-sales service system makes your choice more reassuring">完善的售后服务体系，让您选择更安心</p>
+                    <button class="cta-button" data-zh="了解服务" data-en="Learn Service">了解服务</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (8).jpg')">
                 <div class="slide-content">
-                    <h1>技术创新 引领未来</h1>
-                    <p>持续技术创新，引领建材行业发展</p>
-                    <button class="cta-button">了解技术</button>
+                    <h1 data-zh="技术创新 引领未来" data-en="Technology Innovation & Leading the Future">技术创新 引领未来</h1>
+                    <p data-zh="持续技术创新，引领建材行业发展" data-en="Continuous technological innovation, leading the development of building materials industry">持续技术创新，引领建材行业发展</p>
+                    <button class="cta-button" data-zh="了解技术" data-en="Learn Technology">了解技术</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (9).jpg')">
                 <div class="slide-content">
-                    <h1>合作共赢 携手发展</h1>
-                    <p>与合作伙伴携手共进，共创美好未来</p>
-                    <button class="cta-button">合作咨询</button>
+                    <h1 data-zh="合作共赢 携手发展" data-en="Win-Win Cooperation & Joint Development">合作共赢 携手发展</h1>
+                    <p data-zh="与合作伙伴携手共进，共创美好未来" data-en="Working hand in hand with partners to create a better future together">与合作伙伴携手共进，共创美好未来</p>
+                    <button class="cta-button" data-zh="合作咨询" data-en="Cooperation Inquiry">合作咨询</button>
                 </div>
             </div>
             <div class="slide" style="background-image: url('images/lunbotu (10).jpg')">
                 <div class="slide-content">
-                    <h1>品牌实力 值得信赖</h1>
-                    <p>多年行业经验，品牌实力值得您的信赖</p>
-                    <button class="cta-button">联系我们</button>
+                    <h1 data-zh="品牌实力 值得信赖" data-en="Brand Strength & Trustworthy">品牌实力 值得信赖</h1>
+                    <p data-zh="多年行业经验，品牌实力值得您的信赖" data-en="Years of industry experience, brand strength worthy of your trust">多年行业经验，品牌实力值得您的信赖</p>
+                    <button class="cta-button" data-zh="联系我们" data-en="Contact Us">联系我们</button>
                 </div>
             </div>
         </div>
@@ -168,109 +250,109 @@
     <!-- 选材与售后 -->
     <section id="products" class="products-section">
         <div class="container">
-            <h2 class="section-title">选材与售后</h2>
+            <h2 class="section-title" data-zh="选材与售后" data-en="Materials & After-sales">选材与售后</h2>
             <div class="products-grid">
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/lvcai.jpg" alt="铝材品牌" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>优质铝材</h3>
-                            <p>兴发铝业、凤铝铝业、坚美铝材</p>
+                            <img src="images/lvcai.jpg" alt="铝材品牌" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="优质铝材" data-en="Quality Aluminum">优质铝材</h3>
+                            <p data-zh="兴发铝业、凤铝铝业、坚美铝材" data-en="Xingfa Aluminum, Fenglu Aluminum, Jianmei Aluminum">兴发铝业、凤铝铝业、坚美铝材</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>铝材优势</h3>
-                            <p>✓ 强度高，耐腐蚀<br>✓ 使用寿命长<br>✓ 环保节能<br>✓ 易于加工</p>
+                            <h3 data-zh="铝材优势" data-en="Aluminum Advantages">铝材优势</h3>
+                            <p data-zh="✓ 强度高，耐腐蚀<br>✓ 使用寿命长<br>✓ 环保节能<br>✓ 易于加工" data-en="✓ High strength, corrosion resistant<br>✓ Long service life<br>✓ Eco-friendly and energy saving<br>✓ Easy to process">✓ 强度高，耐腐蚀<br>✓ 使用寿命长<br>✓ 环保节能<br>✓ 易于加工</p>
                         </div>
                     </div>
                 </div>
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/boli.png" alt="玻璃品牌" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>高端玻璃</h3>
-                            <p>福耀玻璃、信义玻璃、南玻集团</p>
+                            <img src="images/boli.png" alt="玻璃品牌" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="高端玻璃" data-en="Premium Glass">高端玻璃</h3>
+                            <p data-zh="福耀玻璃、信义玻璃、南玻集团" data-en="Fuyao Glass, Xinyi Glass, CSG Group">福耀玻璃、信义玻璃、南玻集团</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>玻璃特性</h3>
-                            <p>✓ 透光性好<br>✓ 安全性高<br>✓ 隔音效果佳<br>✓ 节能环保</p>
+                            <h3 data-zh="玻璃特性" data-en="Glass Features">玻璃特性</h3>
+                            <p data-zh="✓ 透光性好<br>✓ 安全性高<br>✓ 隔音效果佳<br>✓ 节能环保" data-en="✓ Good light transmission<br>✓ High safety<br>✓ Excellent sound insulation<br>✓ Energy saving and eco-friendly">✓ 透光性好<br>✓ 安全性高<br>✓ 隔音效果佳<br>✓ 节能环保</p>
                         </div>
                     </div>
                 </div>
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/wujin.png" alt="五金配件" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>精品五金</h3>
-                            <p>德国诺托(ROTO)、德国丝吉利娅(SIEGENIA)、意大利吉斯(GIESSE)</p>
+                            <img src="images/wujin.png" alt="五金配件" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="精品五金" data-en="Premium Hardware">精品五金</h3>
+                            <p data-zh="德国诺托(ROTO)、德国丝吉利娅(SIEGENIA)、意大利吉斯(GIESSE)" data-en="German ROTO, German SIEGENIA, Italian GIESSE">德国诺托(ROTO)、德国丝吉利娅(SIEGENIA)、意大利吉斯(GIESSE)</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>五金优势</h3>
-                            <p>✓ 精工制造<br>✓ 品质可靠<br>✓ 经久耐用<br>✓ 进口工艺</p>
+                            <h3 data-zh="五金优势" data-en="Hardware Advantages">五金优势</h3>
+                            <p data-zh="✓ 精工制造<br>✓ 品质可靠<br>✓ 经久耐用<br>✓ 进口工艺" data-en="✓ Precision manufacturing<br>✓ Reliable quality<br>✓ Durable<br>✓ Imported technology">✓ 精工制造<br>✓ 品质可靠<br>✓ 经久耐用<br>✓ 进口工艺</p>
                         </div>
                     </div>
                 </div>
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/fapaomo.jpg" alt="辅料材质" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>专业辅料</h3>
-                            <p>杭州之江、道康宁(DOW)、桑莱斯(Sika)、硅宝科技</p>
+                            <img src="images/fapaomo.jpg" alt="辅料材质" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="专业辅料" data-en="Professional Accessories">专业辅料</h3>
+                            <p data-zh="杭州之江、道康宁(DOW)、桑莱斯(Sika)、硅宝科技" data-en="Hangzhou Zhijiang, Dow Corning, Sika, Guibao Technology">杭州之江、道康宁(DOW)、桑莱斯(Sika)、硅宝科技</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>辅料特性</h3>
-                            <p>✓ 密封性能好<br>✓ 耐候性强<br>✓ 环保安全<br>✓ 持久稳定</p>
+                            <h3 data-zh="辅料特性" data-en="Accessory Features">辅料特性</h3>
+                            <p data-zh="✓ 密封性能好<br>✓ 耐候性强<br>✓ 环保安全<br>✓ 持久稳定" data-en="✓ Good sealing performance<br>✓ Strong weather resistance<br>✓ Eco-friendly and safe<br>✓ Long-lasting stability">✓ 密封性能好<br>✓ 耐候性强<br>✓ 环保安全<br>✓ 持久稳定</p>
                         </div>
                     </div>
                 </div>
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/shawang.jpg" alt="纱窗系统" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>防护纱窗</h3>
-                            <p>304高透网、亚德曼4K合金高清网</p>
+                            <img src="images/shawang.jpg" alt="纱窗系统" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="防护纱窗" data-en="Protective Screen">防护纱窗</h3>
+                            <p data-zh="304高透网、亚德曼4K合金高清网" data-en="304 High-transparency Mesh, Adman 4K Alloy HD Mesh">304高透网、亚德曼4K合金高清网</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>纱窗优势</h3>
-                            <p>✓ 防蚊虫<br>✓ 透气性好<br>✓ 易清洁维护<br>✓ 高清透视</p>
+                            <h3 data-zh="纱窗优势" data-en="Screen Advantages">纱窗优势</h3>
+                            <p data-zh="✓ 防蚊虫<br>✓ 透气性好<br>✓ 易清洁维护<br>✓ 高清透视" data-en="✓ Mosquito protection<br>✓ Good ventilation<br>✓ Easy to clean and maintain<br>✓ HD transparency">✓ 防蚊虫<br>✓ 透气性好<br>✓ 易清洁维护<br>✓ 高清透视</p>
                         </div>
                     </div>
                 </div>
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/geretiao.jpg" alt="隔热条" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>隔热条材料</h3>
-                            <p>泰诺风(Technoform)、宝泰隔热条、上海优泰</p>
+                            <img src="images/geretiao.jpg" alt="隔热条" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="隔热条材料" data-en="Thermal Break Materials">隔热条材料</h3>
+                            <p data-zh="泰诺风(Technoform)、宝泰隔热条、上海优泰" data-en="Technoform, Baotai Thermal Break, Shanghai Youtai">泰诺风(Technoform)、宝泰隔热条、上海优泰</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>隔热优势</h3>
-                            <p>✓ 隔热性能优异<br>✓ 节能效果好<br>✓ 结构稳定<br>✓ 使用寿命长</p>
+                            <h3 data-zh="隔热优势" data-en="Thermal Advantages">隔热优势</h3>
+                            <p data-zh="✓ 隔热性能优异<br>✓ 节能效果好<br>✓ 结构稳定<br>✓ 使用寿命长" data-en="✓ Excellent thermal insulation<br>✓ Good energy saving effect<br>✓ Stable structure<br>✓ Long service life">✓ 隔热性能优异<br>✓ 节能效果好<br>✓ 结构稳定<br>✓ 使用寿命长</p>
                         </div>
                     </div>
                 </div>
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/anzhaung.jpg" alt="专业安装" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>专业安装</h3>
-                            <p>经验丰富的安装团队，标准化施工流程</p>
+                            <img src="images/anzhaung.jpg" alt="专业安装" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="专业安装" data-en="Professional Installation">专业安装</h3>
+                            <p data-zh="经验丰富的安装团队，标准化施工流程" data-en="Experienced installation team with standardized construction process">经验丰富的安装团队，标准化施工流程</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>安装优势</h3>
-                            <p>✓ 专业团队施工<br>✓ 标准化流程<br>✓ 质量有保障<br>✓ 售后服务完善</p>
+                            <h3 data-zh="安装优势" data-en="Installation Advantages">安装优势</h3>
+                            <p data-zh="✓ 专业团队施工<br>✓ 标准化流程<br>✓ 质量有保障<br>✓ 售后服务完善" data-en="✓ Professional team construction<br>✓ Standardized process<br>✓ Quality guaranteed<br>✓ Perfect after-sales service">✓ 专业团队施工<br>✓ 标准化流程<br>✓ 质量有保障<br>✓ 售后服务完善</p>
                         </div>
                     </div>
                 </div>
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <img src="images/shouhou.jpg" alt="质保服务" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
-                            <h3>贴心质保</h3>
-                            <p>完善的售后质保体系，定期回访维护</p>
+                            <img src="images/shouhou.jpg" alt="质保服务" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:10px;margin-bottom:15px;">
+                            <h3 data-zh="贴心质保" data-en="Caring Warranty">贴心质保</h3>
+                            <p data-zh="完善的售后质保体系，定期回访维护" data-en="Perfect after-sales warranty system with regular follow-up maintenance">完善的售后质保体系，定期回访维护</p>
                         </div>
                         <div class="flip-card-back">
-                            <h3>质保承诺</h3>
-                            <p>✓ 定期回访维护<br>✓ 快速响应服务<br>✓ 专业技术支持<br>✓ 无后顾之忧</p>
+                            <h3 data-zh="质保承诺" data-en="Warranty Promise">质保承诺</h3>
+                            <p data-zh="✓ 定期回访维护<br>✓ 快速响应服务<br>✓ 专业技术支持<br>✓ 无后顾之忧" data-en="✓ Regular follow-up maintenance<br>✓ Quick response service<br>✓ Professional technical support<br>✓ No worries">✓ 定期回访维护<br>✓ 快速响应服务<br>✓ 专业技术支持<br>✓ 无后顾之忧</p>
                         </div>
                     </div>
                 </div>
@@ -283,28 +365,28 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text animate-slide-left">
-                    <h2 class="pulse-animation">关于欧伯乐</h2>
-                    <h3 style="color: #007bff; margin-bottom: 15px; font-size: 1.2rem; text-shadow: 1px 1px 3px rgba(255,255,255,0.9);">怕漏风渗水，就用卢博安全门窗</h3>
-                    <p>江西欧伯乐建材科技有限公司，是一家深耕门窗领域十余载，集<strong>研发创新、智能生产、终端服务</strong>于一体的专业化企业，聚焦为家庭与商业场景提供<strong>"密封抗风、防水隔音"</strong>的高性能门窗解决方案。</p>
+                    <h2 class="pulse-animation" data-zh="关于欧伯乐" data-en="About Oberle">关于欧伯乐</h2>
+                    <h3 style="color: #007bff; margin-bottom: 15px; font-size: 1.2rem; text-shadow: 1px 1px 3px rgba(255,255,255,0.9);" data-zh="怕漏风渗水，就用卢博安全门窗" data-en="Afraid of air leakage and water seepage? Choose Lubo Safety Windows & Doors">怕漏风渗水，就用卢博安全门窗</h3>
+                    <p data-zh="江西欧伯乐建材科技有限公司，是一家深耕门窗领域十余载，集研发创新、智能生产、终端服务于一体的专业化企业，聚焦为家庭与商业场景提供'密封抗风、防水隔音'的高性能门窗解决方案。" data-en="Jiangxi Oberle Building Materials Technology Co., Ltd. is a professional enterprise that has been deeply engaged in the window and door field for more than ten years, integrating R&D innovation, intelligent production, and terminal services, focusing on providing high-performance window and door solutions with 'sealing and wind resistance, waterproof and sound insulation' for home and commercial scenarios.">江西欧伯乐建材科技有限公司，是一家深耕门窗领域十余载，集<strong>研发创新、智能生产、终端服务</strong>于一体的专业化企业，聚焦为家庭与商业场景提供<strong>"密封抗风、防水隔音"</strong>的高性能门窗解决方案。</p>
                     <p>公司在江西产业核心区搭建现代化生产基地，配备德国进口智能加工中心与精密检测设备；组建由20余位资深门窗工程师、结构设计师构成的技术团队，持续突破门窗在<strong>防水密封、抗风压性能、隔热保温</strong>等维度的技术瓶颈，多项技术成果获国家专利认证。</p>
                     <p>产品矩阵涵盖<strong>系统门窗、断桥铝门窗、智能入户门、阳光房</strong>等全品类，广泛适配高端住宅、别墅、商业楼宇等多元场景；生产全流程严格执行ISO9001质量管理体系，关键性能指标（水密性、气密性、隔音量）远超国家标准，从型材甄选到成品安装全链条品控，保障每一款门窗的耐用性与舒适体验。</p>
                     <div class="company-stats">
                         <div class="stat-item">
                             <h3>10+</h3>
-                            <p>年门窗专业经验</p>
+                            <p data-zh="年门窗专业经验" data-en="Years of Professional Experience">年门窗专业经验</p>
                         </div>
                         <div class="stat-item">
                             <h3>20+</h3>
-                            <p>资深技术团队</p>
+                            <p data-zh="资深技术团队" data-en="Senior Technical Team">资深技术团队</p>
                         </div>
                         <div class="stat-item">
                             <h3>ISO9001</h3>
-                            <p>质量管理体系</p>
+                            <p data-zh="质量管理体系" data-en="Quality Management System">质量管理体系</p>
                         </div>
                     </div>
                 </div>
                 <div class="about-image animate-slide-right">
-                    <img src="images/gongsi.jpg" alt="江西欧伯乐建材科技有限公司">
+                    <img src="images/gongsi.jpg" alt="江西欧伯乐建材科技有限公司" loading="lazy">
                 </div>
             </div>
         </div>
@@ -313,11 +395,20 @@
     <!-- 安装实拍 -->
     <section id="cases" class="cases-section">
         <div class="container">
-            <h2 class="section-title pulse-animation">安装实拍</h2>
+            <h2 class="section-title pulse-animation" data-zh="安装实拍" data-en="Installation Photos">安装实拍</h2>
             <div class="cases-slider">
                 <div class="case-item active hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (1).jpg" alt="安装实拍1">
+                        <img src="images/shipai (1).jpg" alt="安装实拍1" loading="lazy">
+                    </div>
+                    <div class="case-info">
+                        <h3 data-zh="安装实拍" data-en="Installation Photos">安装实拍</h3>
+                        <p data-zh="专业安装团队现场施工" data-en="Professional installation team on-site construction">专业安装团队现场施工</p>
+                    </div>
+                </div>
+                <div class="case-item hover-3d animate-on-scroll wave-animation">
+                    <div class="case-image">
+                        <img src="images/shipai (2).jpg" alt="安装实拍2" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -326,7 +417,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (2).jpg" alt="安装实拍2">
+                        <img src="images/shipai (3).jpg" alt="安装实拍3" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -335,7 +426,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (3).jpg" alt="安装实拍3">
+                        <img src="images/shipai (4).jpg" alt="安装实拍4" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -344,7 +435,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (4).jpg" alt="安装实拍4">
+                        <img src="images/shipai (5).jpg" alt="安装实拍5" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -353,7 +444,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (5).jpg" alt="安装实拍5">
+                        <img src="images/shipai (6).jpg" alt="安装实拍6" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -362,7 +453,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (6).jpg" alt="安装实拍6">
+                        <img src="images/shipai (7).jpg" alt="安装实拍7" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -371,7 +462,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (7).jpg" alt="安装实拍7">
+                        <img src="images/shipai (8).jpg" alt="安装实拍8" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -380,7 +471,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (8).jpg" alt="安装实拍8">
+                        <img src="images/shipai (9).jpg" alt="安装实拍9" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -389,7 +480,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (9).jpg" alt="安装实拍9">
+                        <img src="images/shipai (10).jpg" alt="安装实拍10" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -398,7 +489,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (10).jpg" alt="安装实拍10">
+                        <img src="images/shipai (11).jpg" alt="安装实拍11" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -407,7 +498,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (11).jpg" alt="安装实拍11">
+                        <img src="images/shipai (12).jpg" alt="安装实拍12" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -416,16 +507,7 @@
                 </div>
                 <div class="case-item hover-3d animate-on-scroll wave-animation">
                     <div class="case-image">
-                        <img src="images/shipai (12).jpg" alt="安装实拍12">
-                    </div>
-                    <div class="case-info">
-                        <h3>安装实拍</h3>
-                        <p>专业安装团队现场施工</p>
-                    </div>
-                </div>
-                <div class="case-item hover-3d animate-on-scroll wave-animation">
-                    <div class="case-image">
-                        <img src="images/shipai (13).jpg" alt="安装实拍13">
+                        <img src="images/shipai (13).jpg" alt="安装实拍13" loading="lazy">
                     </div>
                     <div class="case-info">
                         <h3>安装实拍</h3>
@@ -439,175 +521,175 @@
     <!-- 招商加盟 -->
     <section id="franchise" class="franchise-section">
         <div class="container">
-            <h2 class="section-title pulse-animation">招商加盟</h2>
+            <h2 class="section-title pulse-animation" data-zh="招商加盟" data-en="Franchise Opportunities">招商加盟</h2>
             <div class="franchise-intro animate-fade-in">
-                <h3>携手欧伯乐，共创财富未来</h3>
-                <p>欧伯乐系统门窗诚邀全国有志之士加盟合作，共同开拓门窗市场，实现互利共赢！</p>
+                <h3 data-zh="携手欧伯乐，共创财富未来" data-en="Partner with Oberle, Create a Prosperous Future Together">携手欧伯乐，共创财富未来</h3>
+                <p data-zh="欧伯乐系统门窗诚邀全国有志之士加盟合作，共同开拓门窗市场，实现互利共赢！" data-en="Oberle System Windows & Doors sincerely invites ambitious people nationwide to join us in cooperation, jointly explore the window and door market, and achieve mutual benefit and win-win results!">欧伯乐系统门窗诚邀全国有志之士加盟合作，共同开拓门窗市场，实现互利共赢！</p>
             </div>
             
             <div class="franchise-content">
                 <!-- 加盟优势 -->
                 <div class="franchise-advantages">
-                    <h3>加盟优势</h3>
+                    <h3 data-zh="加盟优势" data-en="Franchise Advantages">加盟优势</h3>
                     <div class="advantages-grid">
                         <div class="advantage-item">
                             <div class="advantage-icon">
                                 <i class="fas fa-award"></i>
                             </div>
-                            <h4>品牌优势</h4>
-                            <p>知名品牌，市场认知度高，消费者信赖度强</p>
+                            <h4 data-zh="品牌优势" data-en="Brand Advantage">品牌优势</h4>
+                            <p data-zh="知名品牌，市场认知度高，消费者信赖度强" data-en="Well-known brand with high market recognition and strong consumer trust">知名品牌，市场认知度高，消费者信赖度强</p>
                         </div>
                         <div class="advantage-item">
                             <div class="advantage-icon">
                                 <i class="fas fa-cogs"></i>
                             </div>
-                            <h4>技术优势</h4>
-                            <p>先进的生产工艺和技术，产品质量有保障</p>
+                            <h4 data-zh="技术优势" data-en="Technical Advantage">技术优势</h4>
+                            <p data-zh="先进的生产工艺和技术，产品质量有保障" data-en="Advanced production processes and technology with guaranteed product quality">先进的生产工艺和技术，产品质量有保障</p>
                         </div>
                         <div class="advantage-item">
                             <div class="advantage-icon">
                                 <i class="fas fa-handshake"></i>
                             </div>
-                            <h4>服务优势</h4>
-                            <p>完善的售前、售中、售后服务体系</p>
+                            <h4 data-zh="服务优势" data-en="Service Advantage">服务优势</h4>
+                            <p data-zh="完善的售前、售中、售后服务体系" data-en="Complete pre-sales, sales, and after-sales service system">完善的售前、售中、售后服务体系</p>
                         </div>
                         <div class="advantage-item">
                             <div class="advantage-icon">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <h4>市场优势</h4>
-                            <p>广阔的市场前景，持续增长的行业需求</p>
+                            <h4 data-zh="市场优势" data-en="Market Advantage">市场优势</h4>
+                            <p data-zh="广阔的市场前景，持续增长的行业需求" data-en="Broad market prospects with continuously growing industry demand">广阔的市场前景，持续增长的行业需求</p>
                         </div>
                         <div class="advantage-item">
                             <div class="advantage-icon">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <h4>团队优势</h4>
-                            <p>专业的营销团队和技术支持团队</p>
+                            <h4 data-zh="团队优势" data-en="Team Advantage">团队优势</h4>
+                            <p data-zh="专业的营销团队和技术支持团队" data-en="Professional marketing team and technical support team">专业的营销团队和技术支持团队</p>
                         </div>
                         <div class="advantage-item">
                             <div class="advantage-icon">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
-                            <h4>保障优势</h4>
-                            <p>完善的加盟保障体系，降低投资风险</p>
+                            <h4 data-zh="保障优势" data-en="Security Advantage">保障优势</h4>
+                            <p data-zh="完善的加盟保障体系，降低投资风险" data-en="Complete franchise security system to reduce investment risks">完善的加盟保障体系，降低投资风险</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 加盟条件 -->
                 <div class="franchise-requirements">
-                    <h3>加盟条件</h3>
+                    <h3 data-zh="加盟条件" data-en="Franchise Requirements">加盟条件</h3>
                     <div class="requirements-list">
                         <div class="requirement-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>具备一定的经济实力和投资能力</span>
+                            <span data-zh="具备一定的经济实力和投资能力" data-en="Have certain economic strength and investment capability">具备一定的经济实力和投资能力</span>
                         </div>
                         <div class="requirement-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>认同欧伯乐品牌理念和经营模式</span>
+                            <span data-zh="认同欧伯乐品牌理念和经营模式" data-en="Recognize Oberle brand philosophy and business model">认同欧伯乐品牌理念和经营模式</span>
                         </div>
                         <div class="requirement-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>具有良好的商业信誉和合作精神</span>
+                            <span data-zh="具有良好的商业信誉和合作精神" data-en="Have good business reputation and cooperative spirit">具有良好的商业信誉和合作精神</span>
                         </div>
                         <div class="requirement-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>拥有合适的经营场所和展示空间</span>
+                            <span data-zh="拥有合适的经营场所和展示空间" data-en="Own suitable business premises and display space">拥有合适的经营场所和展示空间</span>
                         </div>
                         <div class="requirement-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>具备一定的市场开拓和管理能力</span>
+                            <span data-zh="具备一定的市场开拓和管理能力" data-en="Have certain market development and management capabilities">具备一定的市场开拓和管理能力</span>
                         </div>
                         <div class="requirement-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>愿意接受总部的统一管理和培训</span>
+                            <span data-zh="愿意接受总部的统一管理和培训" data-en="Willing to accept unified management and training from headquarters">愿意接受总部的统一管理和培训</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 加盟支持 -->
                 <div class="franchise-support">
-                    <h3>加盟支持</h3>
+                    <h3 data-zh="加盟支持" data-en="Franchise Support">加盟支持</h3>
                     <div class="support-grid">
                         <div class="support-item">
-                            <h4>选址支持</h4>
-                            <p>协助选择合适的经营场所，提供选址指导</p>
+                            <h4 data-zh="选址支持" data-en="Site Selection Support">选址支持</h4>
+                            <p data-zh="协助选择合适的经营场所，提供选址指导" data-en="Assist in selecting suitable business premises and provide site selection guidance">协助选择合适的经营场所，提供选址指导</p>
                         </div>
                         <div class="support-item">
-                            <h4>装修支持</h4>
-                            <p>提供统一的店面设计方案和装修指导</p>
+                            <h4 data-zh="装修支持" data-en="Decoration Support">装修支持</h4>
+                            <p data-zh="提供统一的店面设计方案和装修指导" data-en="Provide unified store design plans and decoration guidance">提供统一的店面设计方案和装修指导</p>
                         </div>
                         <div class="support-item">
-                            <h4>培训支持</h4>
-                            <p>提供全面的产品知识和销售技能培训</p>
+                            <h4 data-zh="培训支持" data-en="Training Support">培训支持</h4>
+                            <p data-zh="提供全面的产品知识和销售技能培训" data-en="Provide comprehensive product knowledge and sales skills training">提供全面的产品知识和销售技能培训</p>
                         </div>
                         <div class="support-item">
-                            <h4>营销支持</h4>
-                            <p>提供营销策划和广告宣传支持</p>
+                            <h4 data-zh="营销支持" data-en="Marketing Support">营销支持</h4>
+                            <p data-zh="提供营销策划和广告宣传支持" data-en="Provide marketing planning and advertising support">提供营销策划和广告宣传支持</p>
                         </div>
                         <div class="support-item">
-                            <h4>技术支持</h4>
-                            <p>提供专业的技术指导和售后服务支持</p>
+                            <h4 data-zh="技术支持" data-en="Technical Support">技术支持</h4>
+                            <p data-zh="提供专业的技术指导和售后服务支持" data-en="Provide professional technical guidance and after-sales service support">提供专业的技术指导和售后服务支持</p>
                         </div>
                         <div class="support-item">
-                            <h4>物流支持</h4>
-                            <p>完善的物流配送体系，确保及时供货</p>
+                            <h4 data-zh="物流支持" data-en="Logistics Support">物流支持</h4>
+                            <p data-zh="完善的物流配送体系，确保及时供货" data-en="Perfect logistics and distribution system to ensure timely supply">完善的物流配送体系，确保及时供货</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 加盟流程 -->
                 <div class="franchise-process">
-                    <h3>加盟流程</h3>
+                    <h3 data-zh="加盟流程" data-en="Franchise Process">加盟流程</h3>
                     <div class="process-steps">
                         <div class="step-item">
                             <div class="step-number">1</div>
-                            <h4>咨询了解</h4>
-                            <p>电话或实地咨询了解加盟政策</p>
+                            <h4 data-zh="咨询了解" data-en="Consultation">咨询了解</h4>
+                            <p data-zh="电话或实地咨询了解加盟政策" data-en="Phone or on-site consultation to understand franchise policies">电话或实地咨询了解加盟政策</p>
                         </div>
                         <div class="step-item">
                             <div class="step-number">2</div>
-                            <h4>实地考察</h4>
-                            <p>到总部实地考察，了解产品和服务</p>
+                            <h4 data-zh="实地考察" data-en="Site Visit">实地考察</h4>
+                            <p data-zh="到总部实地考察，了解产品和服务" data-en="Visit headquarters for on-site inspection to understand products and services">到总部实地考察，了解产品和服务</p>
                         </div>
                         <div class="step-item">
                             <div class="step-number">3</div>
-                            <h4>签订合同</h4>
-                            <p>双方达成合作意向，签订加盟合同</p>
+                            <h4 data-zh="签订合同" data-en="Contract Signing">签订合同</h4>
+                            <p data-zh="双方达成合作意向，签订加盟合同" data-en="Both parties reach cooperation intention and sign franchise contract">双方达成合作意向，签订加盟合同</p>
                         </div>
                         <div class="step-item">
                             <div class="step-number">4</div>
-                            <h4>店面筹备</h4>
-                            <p>选址装修，人员培训，开业筹备</p>
+                            <h4 data-zh="店面筹备" data-en="Store Preparation">店面筹备</h4>
+                            <p data-zh="选址装修，人员培训，开业筹备" data-en="Site selection, decoration, staff training, opening preparation">选址装修，人员培训，开业筹备</p>
                         </div>
                         <div class="step-item">
                             <div class="step-number">5</div>
-                            <h4>正式开业</h4>
-                            <p>开业运营，总部持续跟踪服务</p>
+                            <h4 data-zh="正式开业" data-en="Grand Opening">正式开业</h4>
+                            <p data-zh="开业运营，总部持续跟踪服务" data-en="Opening operation with continuous tracking service from headquarters">开业运营，总部持续跟踪服务</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 联系加盟 -->
                 <div class="franchise-contact">
-                    <h3>立即加盟</h3>
-                    <p>如果您对我们的加盟项目感兴趣，请立即联系我们！</p>
+                    <h3 data-zh="立即加盟" data-en="Join Now">立即加盟</h3>
+                    <p data-zh="如果您对我们的加盟项目感兴趣，请立即联系我们！" data-en="If you are interested in our franchise project, please contact us immediately!">如果您对我们的加盟项目感兴趣，请立即联系我们！</p>
                     <div class="franchise-contact-info">
                         <div class="contact-method">
                             <i class="fas fa-phone"></i>
-                            <span>加盟热线：18970825710</span>
+                            <span data-zh="加盟热线：18970825710" data-en="Franchise Hotline: 18970825710">加盟热线：18970825710</span>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-envelope"></i>
-                            <span>邮箱：3278908492@qq.com</span>
+                            <span data-zh="邮箱：3278908492@qq.com" data-en="Email: 3278908492@qq.com">邮箱：3278908492@qq.com</span>
                         </div>
                         <div class="contact-method">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>地址：江西省南昌市安义县东阳大道166号</span>
+                            <span data-zh="地址：江西省南昌市安义县东阳大道166号" data-en="Address: No.166 Dongyang Avenue, Anyi County, Nanchang City, Jiangxi Province">地址：江西省南昌市安义县东阳大道166号</span>
                         </div>
                     </div>
-                    <button class="franchise-btn">立即咨询加盟</button>
+                    <button class="franchise-btn" data-zh="立即咨询加盟" data-en="Inquire About Franchise Now">立即咨询加盟</button>
                 </div>
             </div>
         </div>
@@ -617,8 +699,8 @@
     <section id="purchase" class="purchase-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="pulse-animation">如何购买</h2>
-                <p>多种购买渠道，满足您的不同需求</p>
+                <h2 class="pulse-animation" data-zh="如何购买" data-en="How to Purchase">如何购买</h2>
+                <p data-zh="多种购买渠道，满足您的不同需求" data-en="Multiple purchase channels to meet your different needs">多种购买渠道，满足您的不同需求</p>
             </div>
             
             <div class="purchase-channels">
@@ -626,16 +708,16 @@
                     <div class="channel-icon">
                         <i class="fab fa-shopify"></i>
                     </div>
-                    <h3>淘宝店铺</h3>
-                    <p>官方淘宝旗舰店，品质保证，售后无忧</p>
+                    <h3 data-zh="淘宝店铺" data-en="Taobao Store">淘宝店铺</h3>
+                    <p data-zh="官方淘宝旗舰店，品质保证，售后无忧" data-en="Official Taobao flagship store with quality assurance and worry-free after-sales">官方淘宝旗舰店，品质保证，售后无忧</p>
                     <div class="channel-features">
-                        <span class="feature-tag">✓ 7天无理由退换</span>
-                        <span class="feature-tag">✓ 正品保证</span>
-                        <span class="feature-tag">✓ 快速发货</span>
+                        <span class="feature-tag" data-zh="✓ 7天无理由退换" data-en="✓ 7-day no-reason return">✓ 7天无理由退换</span>
+                        <span class="feature-tag" data-zh="✓ 正品保证" data-en="✓ Genuine guarantee">✓ 正品保证</span>
+                        <span class="feature-tag" data-zh="✓ 快速发货" data-en="✓ Fast shipping">✓ 快速发货</span>
                     </div>
                     <a href="#" class="channel-btn" data-platform="taobao">
                         <i class="fas fa-shopping-cart"></i>
-                        进入淘宝店铺
+                        <span data-zh="进入淘宝店铺" data-en="Enter Taobao Store">进入淘宝店铺</span>
                     </a>
                 </div>
                 
@@ -643,49 +725,49 @@
                     <div class="channel-icon">
                         <i class="fas fa-industry"></i>
                     </div>
-                    <h3>1688批发</h3>
-                    <p>阿里巴巴1688平台，批量采购，价格优惠</p>
+                    <h3 data-zh="1688批发" data-en="1688 Wholesale">1688批发</h3>
+                    <p data-zh="阿里巴巴1688平台，批量采购，价格优惠" data-en="Alibaba 1688 platform for bulk purchasing with preferential prices">阿里巴巴1688平台，批量采购，价格优惠</p>
                     <div class="channel-features">
-                        <span class="feature-tag">✓ 批量优惠</span>
-                        <span class="feature-tag">✓ 厂家直销</span>
-                        <span class="feature-tag">✓ 定制服务</span>
+                        <span class="feature-tag" data-zh="✓ 批量优惠" data-en="✓ Bulk discount">✓ 批量优惠</span>
+                        <span class="feature-tag" data-zh="✓ 厂家直销" data-en="✓ Direct factory sales">✓ 厂家直销</span>
+                        <span class="feature-tag" data-zh="✓ 定制服务" data-en="✓ Customization service">✓ 定制服务</span>
                     </div>
                     <a href="#" class="channel-btn" data-platform="1688">
                         <i class="fas fa-warehouse"></i>
-                        进入1688店铺
+                        <span data-zh="进入1688店铺" data-en="Enter 1688 Store">进入1688店铺</span>
                     </a>
                 </div>
             </div>
             
             <div class="purchase-guide">
-                <h3>购买流程</h3>
+                <h3 data-zh="购买流程" data-en="Purchase Process">购买流程</h3>
                 <div class="guide-steps">
                     <div class="step-item">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h4>选择渠道</h4>
-                            <p>根据需求选择淘宝或1688平台</p>
+                            <h4 data-zh="选择渠道" data-en="Choose Channel">选择渠道</h4>
+                            <p data-zh="根据需求选择淘宝或1688平台" data-en="Choose Taobao or 1688 platform according to your needs">根据需求选择淘宝或1688平台</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h4>浏览产品</h4>
-                            <p>查看产品详情和规格参数</p>
+                            <h4 data-zh="浏览产品" data-en="Browse Products">浏览产品</h4>
+                            <p data-zh="查看产品详情和规格参数" data-en="View product details and specifications">查看产品详情和规格参数</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h4>咨询客服</h4>
-                            <p>如有疑问可联系在线客服</p>
+                            <h4 data-zh="咨询客服" data-en="Consult Customer Service">咨询客服</h4>
+                            <p data-zh="如有疑问可联系在线客服" data-en="Contact online customer service if you have any questions">如有疑问可联系在线客服</p>
                         </div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h4>下单购买</h4>
-                            <p>确认订单信息并完成支付</p>
+                            <h4 data-zh="下单购买" data-en="Place Order">下单购买</h4>
+                            <p data-zh="确认订单信息并完成支付" data-en="Confirm order information and complete payment">确认订单信息并完成支付</p>
                         </div>
                     </div>
                 </div>
@@ -693,20 +775,20 @@
             
             <div class="purchase-contact">
                 <div class="contact-info">
-                    <h3>购买咨询</h3>
-                    <p>如需了解更多产品信息或批量采购，请联系我们：</p>
+                    <h3 data-zh="购买咨询" data-en="Purchase Consultation">购买咨询</h3>
+                    <p data-zh="如需了解更多产品信息或批量采购，请联系我们：" data-en="For more product information or bulk purchasing, please contact us:">如需了解更多产品信息或批量采购，请联系我们：</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <span>咨询热线：13636661988</span>
+                            <span data-zh="咨询热线：13636661988" data-en="Consultation Hotline: 13636661988">咨询热线：13636661988</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>邮箱：3278908492@qq.com</span>
+                            <span data-zh="邮箱：3278908492@qq.com" data-en="Email: 3278908492@qq.com">邮箱：3278908492@qq.com</span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
-                            <span>服务时间：周一至周日 8:00-20:00</span>
+                            <span data-zh="服务时间：周一至周日 8:00-20:00" data-en="Service Hours: Monday to Sunday 8:00-20:00">服务时间：周一至周日 8:00-20:00</span>
                         </div>
                     </div>
                 </div>
@@ -717,43 +799,43 @@
     <!-- 联系我们 -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title pulse-animation">联系我们</h2>
+            <h2 class="section-title pulse-animation" data-zh="联系我们" data-en="Contact Us">联系我们</h2>
             <div class="contact-content">
                 <div class="contact-info animate-slide-left">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                <h4>公司地址</h4>
-                                <p>江西省南昌市安义县东阳大道166号</p>
+                                <h4 data-zh="公司地址" data-en="Company Address">公司地址</h4>
+                                <p data-zh="江西省南昌市安义县东阳大道166号" data-en="No.166 Dongyang Avenue, Anyi County, Nanchang City, Jiangxi Province">江西省南昌市安义县东阳大道166号</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-user"></i>
                             <div>
-                                <h4>联系人</h4>
-                                <p>罗经理</p>
+                                <h4 data-zh="联系人" data-en="Contact Person">联系人</h4>
+                                <p data-zh="罗经理" data-en="Manager Luo">罗经理</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
                             <div>
-                                <h4>联系电话</h4>
-                                <p>13636661988</p>
+                                <h4 data-zh="联系电话" data-en="Phone Number">联系电话</h4>
+                                <p data-zh="13636661988" data-en="13636661988">13636661988</p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <h4>邮箱地址</h4>
-                                <p>3278908492@qq.com</p>
+                                <h4 data-zh="邮箱地址" data-en="Email Address">邮箱地址</h4>
+                                <p data-zh="3278908492@qq.com" data-en="3278908492@qq.com">3278908492@qq.com</p>
                             </div>
                         </div>
                     </div>
                 <div class="contact-wechat animate-slide-right">
                     <div class="wechat-qr">
                         <img src="images/WeChat.jpg" alt="微信二维码" class="qr-code">
-                        <h4>扫码添加微信</h4>
-                        <p>快速联系我们，获取专业建材解决方案</p>
+                        <h4 data-zh="扫码添加微信" data-en="Scan to Add WeChat">扫码添加微信</h4>
+                        <p data-zh="快速联系我们，获取专业建材解决方案" data-en="Contact us quickly for professional building materials solutions">快速联系我们，获取专业建材解决方案</p>
                     </div>
                 </div>
             </div>
@@ -765,29 +847,29 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>江西欧伯乐建材科技有限公司</h3>
-                    <p>专业建材解决方案提供商</p>
+                    <h3 data-zh="江西欧伯乐建材科技有限公司" data-en="Jiangxi Oberle Building Materials Technology Co., Ltd.">江西欧伯乐建材科技有限公司</h3>
+                    <p data-zh="专业建材解决方案提供商" data-en="Professional building materials solution provider">专业建材解决方案提供商</p>
                 </div>
                 <div class="footer-section">
-                    <h4>快速链接</h4>
+                    <h4 data-zh="快速链接" data-en="Quick Links">快速链接</h4>
                     <ul>
-                        <li><a href="#home">首页</a></li>
-                        <li><a href="#products">选材与售后</a></li>
-                        <li><a href="#about">关于我们</a></li>
-                        <li><a href="#cases">工程案例</a></li>
-                        <li><a href="#franchise">招商加盟</a></li>
-                        <li><a href="#purchase">如何购买</a></li>
-                        <li><a href="#contact">联系我们</a></li>
+                        <li><a href="#home" data-zh="首页" data-en="Home">首页</a></li>
+                        <li><a href="#products" data-zh="选材与售后" data-en="Materials & Service">选材与售后</a></li>
+                        <li><a href="#about" data-zh="关于我们" data-en="About Us">关于我们</a></li>
+                        <li><a href="#cases" data-zh="工程案例" data-en="Project Cases">工程案例</a></li>
+                        <li><a href="#franchise" data-zh="招商加盟" data-en="Franchise">招商加盟</a></li>
+                        <li><a href="#purchase" data-zh="如何购买" data-en="How to Purchase">如何购买</a></li>
+                        <li><a href="#contact" data-zh="联系我们" data-en="Contact Us">联系我们</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>联系方式</h4>
-                    <p>电话：13636661988</p>
-                    <p>邮箱：3278908492@qq.com</p>
+                    <h4 data-zh="联系方式" data-en="Contact Information">联系方式</h4>
+                    <p data-zh="电话：13636661988" data-en="Phone: 13636661988">电话：13636661988</p>
+                    <p data-zh="邮箱：3278908492@qq.com" data-en="Email: 3278908492@qq.com">邮箱：3278908492@qq.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 江西欧伯乐建材科技有限公司 版权所有</p>
+                <p data-zh="&copy; 2024 江西欧伯乐建材科技有限公司 版权所有" data-en="&copy; 2024 Jiangxi Oberle Building Materials Technology Co., Ltd. All rights reserved">&copy; 2024 江西欧伯乐建材科技有限公司 版权所有</p>
             </div>
         </div>
     </footer>

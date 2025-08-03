@@ -49,6 +49,9 @@
             // 招商加盟功能
             initFranchise();
             
+            // 语言切换功能
+            initLanguageSwitch();
+            
             // 如何购买功能
             initPurchase();
             
@@ -698,4 +701,116 @@ if ('requestIdleCallback' in window) {
     });
 } else {
     setTimeout(preloadImages, 2000);
+}
+
+// 语言切换功能
+function initLanguageSwitch() {
+    // 创建语言切换按钮
+    const languageBtn = document.createElement('button');
+    languageBtn.className = 'language-switch-btn';
+    languageBtn.innerHTML = '<i class="fas fa-globe"></i> EN';
+    languageBtn.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 123, 255, 0.9);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 1001;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        backdrop-filter: blur(10px);
+    `;
+    
+    document.body.appendChild(languageBtn);
+    
+    // 获取当前语言状态
+    let currentLanguage = localStorage.getItem('website-language') || 'zh';
+    
+    // 更新按钮文本
+    function updateButtonText() {
+        if (currentLanguage === 'zh') {
+            languageBtn.innerHTML = '<i class="fas fa-globe"></i> EN';
+        } else {
+            languageBtn.innerHTML = '<i class="fas fa-globe"></i> 中文';
+        }
+    }
+    
+    // 切换语言函数
+    function switchLanguage() {
+        const elementsWithLang = document.querySelectorAll('[data-zh][data-en]');
+        
+        elementsWithLang.forEach(element => {
+            const zhText = element.getAttribute('data-zh');
+            const enText = element.getAttribute('data-en');
+            
+            if (currentLanguage === 'zh') {
+                element.textContent = enText;
+            } else {
+                element.textContent = zhText;
+            }
+        });
+        
+        // 切换语言状态
+        currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+        
+        // 保存到本地存储
+        localStorage.setItem('website-language', currentLanguage);
+        
+        // 更新按钮文本
+        updateButtonText();
+        
+        // 添加切换动画效果
+        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.opacity = '0.8';
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 150);
+    }
+    
+    // 初始化语言显示
+    if (currentLanguage === 'en') {
+        switchLanguage();
+    }
+    updateButtonText();
+    
+    // 绑定点击事件
+    languageBtn.addEventListener('click', switchLanguage);
+    
+    // 鼠标悬停效果
+    languageBtn.addEventListener('mouseenter', () => {
+        languageBtn.style.transform = 'scale(1.05)';
+        languageBtn.style.background = 'rgba(0, 123, 255, 1)';
+    });
+    
+    languageBtn.addEventListener('mouseleave', () => {
+        languageBtn.style.transform = 'scale(1)';
+        languageBtn.style.background = 'rgba(0, 123, 255, 0.9)';
+    });
+    
+    // 响应式调整
+    function adjustButtonPosition() {
+        if (window.innerWidth <= 768) {
+            languageBtn.style.top = '15px';
+            languageBtn.style.right = '15px';
+            languageBtn.style.padding = '8px 12px';
+            languageBtn.style.fontSize = '12px';
+        } else {
+            languageBtn.style.top = '20px';
+            languageBtn.style.right = '20px';
+            languageBtn.style.padding = '10px 15px';
+            languageBtn.style.fontSize = '14px';
+        }
+    }
+    
+    // 初始调整
+    adjustButtonPosition();
+    
+    // 监听窗口大小变化
+    window.addEventListener('resize', adjustButtonPosition);
 }

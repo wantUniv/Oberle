@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# 优化爬虫访问
+Crawl-delay: 1
+
+# 站点地图
+Sitemap: https://www.oberle-jiancai.com/sitemap.xml
+
+# 禁止访问的目录（如果有的话）
+# Disallow: /admin/
+# Disallow: /private/
+
+# 允许访问图片
+Allow: /images/
+Allow: *.jpg
+Allow: *.png
+Allow: *.gif
+Allow: *.svg
+
+# 允许访问CSS和JS文件
+Allow: *.css
+Allow: *.js
