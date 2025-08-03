@@ -1,30 +1,100 @@
-// 等待DOM加载完成
-document.addEventListener('DOMContentLoaded', function() {
-    // 轮播图功能
-    initHeroSlider();
+// 兼容性检查和polyfill
+(function() {
+    'use strict';
     
-    // 导航栏功能
-    initNavigation();
+    // 检查基本API支持
+    if (!document.addEventListener) {
+        console.warn('浏览器不支持addEventListener，部分功能可能无法正常工作');
+        return;
+    }
     
-    // 滚动动画
-    initScrollAnimations();
+    // Polyfill for forEach (IE8+)
+    if (!Array.prototype.forEach) {
+        Array.prototype.forEach = function(callback, thisArg) {
+            for (var i = 0; i < this.length; i++) {
+                callback.call(thisArg, this[i], i, this);
+            }
+        };
+    }
     
-    // 平滑滚动
-    initSmoothScroll();
-});
+    // Polyfill for querySelectorAll (IE8+)
+    if (!document.querySelectorAll) {
+        document.querySelectorAll = function(selector) {
+            var doc = document,
+                head = doc.documentElement.firstChild,
+                styleTag = doc.createElement('STYLE');
+            head.appendChild(styleTag);
+            doc.__qsaels = [];
+            styleTag.styleSheet.cssText = selector + "{x:expression(document.__qsaels.push(this))}";
+            window.scrollBy(0, 0);
+            return doc.__qsaels;
+        };
+    }
+    
+    // 主入口函数
+    function initApp() {
+        try {
+            // 轮播图功能
+            initHeroSlider();
+            
+            // 导航栏功能
+            initNavigation();
+            
+            // 滚动动画
+            initScrollAnimations();
+            
+            // 平滑滚动
+            initSmoothScroll();
+            
+            // 招商加盟功能
+            initFranchise();
+            
+            // 如何购买功能
+            initPurchase();
+            
+            console.log('网站初始化完成');
+        } catch (error) {
+            console.error('网站初始化失败:', error);
+        }
+    }
+    
+    // 兼容不同的DOM加载事件
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+        initApp();
+    }
+    
+    // 备用加载方式
+    if (window.addEventListener) {
+        window.addEventListener('load', function() {
+            if (!window.appInitialized) {
+                initApp();
+                window.appInitialized = true;
+            }
+        });
+    }
+})();
 
 // 轮播图初始化
 function initHeroSlider() {
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    
-    // 检查必要元素是否存在
-    if (!slides.length || !dots.length || !prevBtn || !nextBtn) {
-        console.warn('轮播图元素未找到，跳过初始化');
-        return;
-    }
+    try {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        // 检查必要元素是否存在
+        if (!slides || !slides.length || !dots || !dots.length || !prevBtn || !nextBtn) {
+            console.warn('轮播图元素未找到，跳过初始化');
+            return;
+        }
+        
+        // 检查浏览器是否支持classList
+        if (!document.documentElement.classList) {
+            console.warn('浏览器不支持classList，轮播图功能可能受限');
+            return;
+        }
     
     let currentSlide = 0;
     let slideInterval;
@@ -69,7 +139,7 @@ function initHeroSlider() {
 
     // 开始自动播放
     function startAutoPlay() {
-        slideInterval = setInterval(nextSlide, 5000);
+        slideInterval = setInterval(nextSlide, 2000);
     }
 
     // 停止自动播放
@@ -119,11 +189,15 @@ function initHeroSlider() {
     window.addEventListener('blur', stopAutoPlay);
     window.addEventListener('focus', startAutoPlay);
 
-    // 开始自动播放
-    startAutoPlay();
-    
-    // 初始化第一张幻灯片
-    showSlide(0);
+        // 开始自动播放
+        startAutoPlay();
+        
+        // 初始化第一张幻灯片
+        showSlide(0);
+        
+    } catch (error) {
+        console.error('轮播图初始化失败:', error);
+    }
 }
 
 // 导航栏功能
@@ -174,7 +248,7 @@ function initScrollAnimations() {
 
     // 为需要动画的元素添加观察
     const animatedElements = document.querySelectorAll(
-        '.product-card, .case-item, .about-text, .contact-item'
+        '.product-card, .case-item, .about-text, .contact-item, .animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale, .animate-rotate, .animate-fade-in'
     );
     
     animatedElements.forEach(el => {
@@ -264,9 +338,206 @@ if (statsSection) {
     statsObserver.observe(statsSection);
 }
 
-// 添加页面加载动画
+// 粒子背景效果初始化
+function initParticles() {
+    if (typeof particlesJS !== 'undefined') {
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#ffffff'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 400,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    }
+}
+
+// 视差滚动效果
+function initParallaxEffect() {
+    const parallaxElements = document.querySelectorAll('.parallax-element');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        parallaxElements.forEach(element => {
+            element.style.transform = `translateY(${rate}px)`;
+        });
+    });
+}
+
+// 3D鼠标跟随效果
+function init3DMouseEffect() {
+    const cards = document.querySelectorAll('.hover-3d');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        });
+    });
+}
+
+// 增强的滚动动画
+function enhancedScrollAnimations() {
+    // 为不同元素添加延迟动画
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.2}s`;
+    });
+    
+    // 添加滚动进度指示器
+    const progressBar = document.createElement('div');
+    progressBar.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 4px;
+        background: linear-gradient(90deg, #007bff, #28a745);
+        z-index: 9999;
+        transition: width 0.3s ease;
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+// 主初始化函数
+function init() {
+    initHeroSlider();
+    initNavigation();
+    initScrollAnimations();
+    initSmoothScroll();
+    initFranchise();
+    initPurchase();
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', init);
+
+// 添加页面加载动画和震撼视觉效果
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
+    
+    // 初始化新增的震撼视觉效果
+    setTimeout(() => {
+        initParticles();
+    }, 100);
+    
+    initParallaxEffect();
+    init3DMouseEffect();
+    enhancedScrollAnimations();
 });
 
 // 返回顶部按钮
@@ -333,6 +604,80 @@ document.addEventListener('keydown', (e) => {
         navMenu.classList.remove('active');
     }
 });
+
+// 如何购买功能
+function initPurchase() {
+    const channelBtns = document.querySelectorAll('.channel-btn');
+    
+    channelBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const platform = btn.getAttribute('data-platform');
+            
+            // 按钮点击动画
+            btn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+            }, 150);
+            
+            // 根据平台跳转到对应店铺
+             if (platform === 'taobao') {
+                 window.open('https://shop305110886.taobao.com/?spm=a21n57.shop_search.0.0.2934523cS9Vz5r', '_blank');
+             } else if (platform === '1688') {
+                 window.open('https://shizhix.1688.com/page/offerlist.htm?spm=a2615.27861609.wp_pc_common_topnav.0', '_blank');
+             }
+        });
+    });
+    
+    // 购买渠道卡片动画
+    const channelItems = document.querySelectorAll('.channel-item');
+    channelItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+    });
+    
+    // 购买流程步骤动画
+    const guideSteps = document.querySelectorAll('.guide-steps .step-item');
+    guideSteps.forEach((step, index) => {
+        step.style.animationDelay = `${index * 0.15}s`;
+    });
+}
+
+// 招商加盟功能
+function initFranchise() {
+    const franchiseBtn = document.querySelector('.franchise-btn');
+    
+    if (franchiseBtn) {
+        franchiseBtn.addEventListener('click', () => {
+            // 滚动到联系我们部分
+            const contactSection = document.querySelector('#contact');
+            if (contactSection) {
+                const offsetTop = contactSection.offsetTop - 65;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+            
+            // 可以添加更多交互效果
+            franchiseBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                franchiseBtn.style.transform = 'scale(1)';
+            }, 150);
+        });
+    }
+    
+    // 加盟优势卡片动画
+    const advantageItems = document.querySelectorAll('.advantage-item');
+    advantageItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+    });
+    
+    // 加盟流程步骤动画
+    const stepItems = document.querySelectorAll('.step-item');
+    stepItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+    });
+}
 
 // 预加载图片（如果有真实图片的话）
 function preloadImages() {
