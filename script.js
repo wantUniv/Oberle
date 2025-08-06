@@ -34,11 +34,23 @@
     // 主入口函数
     function initApp() {
         try {
+            // 视频背景和打字机动画
+            initHeroVideo();
+            
+            // 动态计数器
+            initCounterAnimations();
+            
+            // 页面锚点进度指示器
+            initScrollProgress();
+            
             // 轮播图功能
             initHeroSlider();
             
             // 导航栏功能
             initNavigation();
+            
+            // 导航栏滚动效果
+            initNavbarScroll();
             
             // 滚动动画
             initScrollAnimations();
@@ -79,6 +91,50 @@
     }
 })();
 
+// 导航栏滚动效果
+function initNavbarScroll() {
+    try {
+        const navbar = document.querySelector('.navbar');
+        if (!navbar) {
+            console.warn('导航栏元素未找到');
+            return;
+        }
+        
+        let lastScrollTop = 0;
+        
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // 添加滚动样式
+            if (scrollTop > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        }
+        
+        // 使用节流函数优化性能
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(handleScroll);
+                ticking = true;
+                setTimeout(function() {
+                    ticking = false;
+                }, 16);
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick);
+        
+        console.log('导航栏滚动效果初始化完成');
+    } catch (error) {
+        console.error('导航栏滚动效果初始化失败:', error);
+    }
+}
+
 // 轮播图初始化
 function initHeroSlider() {
     try {
@@ -100,7 +156,8 @@ function initHeroSlider() {
         }
     
     let currentSlide = 0;
-    let slideInterval;
+    // 移除自动播放相关变量
+    // let slideInterval;  // 删除这行
     let isTransitioning = false;
 
     // 显示指定幻灯片
@@ -150,28 +207,31 @@ function initHeroSlider() {
         clearInterval(slideInterval);
     }
 
-    // 事件监听器
+    // 事件监听器 - 移除自动播放重启
     nextBtn.addEventListener('click', () => {
-        stopAutoPlay();
+        // stopAutoPlay();  // 删除这行
         nextSlide();
-        startAutoPlay();
+        // startAutoPlay();  // 删除这行
     });
 
     prevBtn.addEventListener('click', () => {
-        stopAutoPlay();
+        // stopAutoPlay();  // 删除这行
         prevSlide();
-        startAutoPlay();
+        // startAutoPlay();  // 删除这行
     });
 
-    // 点击圆点切换
+    // 点击圆点切换 - 移除自动播放重启
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            stopAutoPlay();
+            // stopAutoPlay();  // 删除这行
             showSlide(index);
-            startAutoPlay();
+            // startAutoPlay();  // 删除这行
         });
     });
 
+    // 移除所有自动播放相关的事件监听器
+    // 删除以下所有代码：
+    /*
     // 鼠标悬停时停止自动播放
     const heroSection = document.querySelector('.hero-section');
     if (heroSection) {
@@ -192,8 +252,9 @@ function initHeroSlider() {
     window.addEventListener('blur', stopAutoPlay);
     window.addEventListener('focus', startAutoPlay);
 
-        // 开始自动播放
-        startAutoPlay();
+    // 开始自动播放
+    startAutoPlay();
+    */
         
         // 初始化第一张幻灯片
         showSlide(0);
@@ -224,6 +285,9 @@ function initNavigation() {
         });
     });
 
+    // 移除滚动时改变导航栏样式的代码
+    // 删除以下代码：
+    /*
     // 滚动时改变导航栏样式
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -232,6 +296,7 @@ function initNavigation() {
             navbar.style.background = 'transparent';
         }
     });
+    */
 }
 
 // 滚动动画
@@ -309,37 +374,48 @@ document.querySelectorAll('.case-item').forEach(item => {
 
 // 数字动画效果
 function animateNumbers() {
-    const stats = document.querySelectorAll('.stat-item h3');
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
     
-    stats.forEach(stat => {
-        const target = parseInt(stat.textContent);
+    statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const increment = target / 100;
         let current = 0;
-        const increment = target / 50;
+        
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
                 current = target;
                 clearInterval(timer);
             }
-            stat.textContent = Math.floor(current) + '+';
-        }, 50);
+            
+            if (target === 100) {
+                stat.textContent = Math.floor(current) + '%';
+            } else {
+                stat.textContent = Math.floor(current) + '+';
+            }
+        }, 20);
     });
 }
 
-// 当统计数据区域进入视口时触发数字动画
-const statsObserver = new IntersectionObserver((entries) => {
+// 增强的滚动观察器
+const enhancedObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            animateNumbers();
-            statsObserver.unobserve(entry.target);
+            entry.target.classList.add('animate');
+            
+            // 如果是统计数据区域，启动数字动画
+            if (entry.target.classList.contains('company-stats-enhanced')) {
+                setTimeout(animateNumbers, 500);
+            }
         }
     });
-}, { threshold: 0.5 });
+}, { threshold: 0.2 });
 
-const statsSection = document.querySelector('.company-stats');
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
+// 观察所有需要动画的元素
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-slide-left, .animate-slide-right');
+    animatedElements.forEach(el => enhancedObserver.observe(el));
+});
 
 // 粒子背景效果初始化
 function initParticles() {
@@ -814,3 +890,263 @@ function initLanguageSwitch() {
     // 监听窗口大小变化
     window.addEventListener('resize', adjustButtonPosition);
 }
+// 产品轮播功能
+function initProductCarousel() {
+    const slides = document.querySelectorAll('.product-slide');
+    let currentSlide = 0;
+    
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    // 自动轮播
+    setInterval(nextSlide, 4000);
+    
+    // VR体验按钮点击事件
+    const vrBtn = document.querySelector('.vr-btn');
+    if (vrBtn) {
+        vrBtn.addEventListener('click', function() {
+            // 这里可以添加VR体验的逻辑
+            alert('VR体验功能开发中...');
+        });
+    }
+}
+
+// 品牌实力动画
+function initStrengthAnimation() {
+    const strengthItems = document.querySelectorAll('.strength-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+            }
+        });
+    });
+    
+    strengthItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s ease';
+        observer.observe(item);
+    });
+}
+
+// 初始化新功能
+// 视频背景和打字机动画初始化
+function initHeroVideo() {
+    try {
+        const video = document.querySelector('.hero-background-video');
+        const typewriterText = document.querySelector('.typewriter-text');
+        
+        // 视频加载优化
+        if (video) {
+            video.addEventListener('loadeddata', function() {
+                console.log('视频加载完成');
+            });
+            
+            video.addEventListener('error', function() {
+                console.warn('视频加载失败，使用后备图片');
+                const fallback = document.querySelector('.video-fallback');
+                if (fallback) {
+                    fallback.style.display = 'block';
+                }
+            });
+        }
+        
+        // 打字机动画重启功能
+        if (typewriterText) {
+            setTimeout(() => {
+                typewriterText.style.animation = 'none';
+                typewriterText.offsetHeight; // 触发重排
+                typewriterText.style.animation = 'typewriter 4s steps(40, end), blink-caret 0.75s step-end infinite';
+            }, 100);
+        }
+        
+        console.log('视频背景初始化完成');
+    } catch (error) {
+        console.error('视频背景初始化失败:', error);
+    }
+}
+
+// 动态计数器动画
+function initCounterAnimations() {
+    try {
+        const counters = document.querySelectorAll('.counter-animation');
+        
+        function animateCounter(counter) {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const duration = 2000; // 2秒动画
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+            
+            counter.classList.add('counting');
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                    counter.classList.remove('counting');
+                }
+                counter.textContent = Math.floor(current) + suffix;
+            }, 16);
+        }
+        
+        // 使用Intersection Observer触发动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    animateCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        console.log('动态计数器初始化完成');
+    } catch (error) {
+        console.error('动态计数器初始化失败:', error);
+    }
+}
+
+// 页面锚点进度指示器
+function initScrollProgress() {
+    try {
+        // 创建进度指示器
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'scroll-progress';
+        
+        const sections = ['home', 'products', 'about', 'cases', 'franchise', 'purchase', 'contact'];
+        const sectionNames = ['首页', '选材', '关于', '案例', '加盟', '购买', '联系'];
+        
+        sections.forEach((sectionId, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot';
+            dot.setAttribute('data-section', sectionId);
+            dot.setAttribute('title', sectionNames[index]);
+            
+            dot.addEventListener('click', () => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            progressContainer.appendChild(dot);
+        });
+        
+        document.body.appendChild(progressContainer);
+        
+        // 滚动监听更新活动状态
+        function updateProgress() {
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const dots = document.querySelectorAll('.progress-dot');
+            
+            sections.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        dots[index].classList.add('active');
+                    }
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateProgress);
+        updateProgress(); // 初始化
+        
+        console.log('页面锚点进度指示器初始化完成');
+    } catch (error) {
+        console.error('页面锚点进度指示器初始化失败:', error);
+    }
+}
+
+// SVG动画图标功能
+function initSVGAnimations() {
+    try {
+        // 防水图标动画
+        const waterproofIcon = `
+            <svg class="animated-icon waterproof-icon" viewBox="0 0 100 100" width="60" height="60">
+                <defs>
+                    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4FC3F7;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#29B6F6;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path class="water-drop" d="M50 20 C30 40, 30 60, 50 80 C70 60, 70 40, 50 20 Z" fill="url(#waterGradient)">
+                    <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="2s" repeatCount="indefinite"/>
+                </path>
+                <circle class="ripple" cx="50" cy="50" r="35" fill="none" stroke="#4FC3F7" stroke-width="2" opacity="0">
+                    <animate attributeName="r" values="35;45;35" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0;0.7;0" dur="2s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        `;
+        
+        // 隔热图标动画
+        const thermalIcon = `
+            <svg class="animated-icon thermal-icon" viewBox="0 0 100 100" width="60" height="60">
+                <defs>
+                    <linearGradient id="heatGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#FF5722;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#FF9800;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#FFC107;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <rect x="20" y="30" width="60" height="40" fill="url(#heatGradient)" rx="5">
+                    <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
+                </rect>
+                <path class="heat-wave" d="M25 25 Q30 20 35 25 Q40 30 45 25 Q50 20 55 25 Q60 30 65 25 Q70 20 75 25" 
+                      stroke="#FF5722" stroke-width="2" fill="none" opacity="0.8">
+                    <animateTransform attributeName="transform" type="translateY" values="0;-5;0" dur="1s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        `;
+        
+        // 将SVG图标添加到相应的卡片中
+        const cards = document.querySelectorAll('.premium-card');
+        cards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            const iconContainer = card.querySelector('.card-icon');
+            
+            if (iconContainer) {
+                iconContainer.addEventListener('mouseenter', () => {
+                    if (category === 'glass' && !iconContainer.querySelector('.waterproof-icon')) {
+                        iconContainer.innerHTML += waterproofIcon;
+                    } else if (category === 'thermal' && !iconContainer.querySelector('.thermal-icon')) {
+                        iconContainer.innerHTML += thermalIcon;
+                    }
+                });
+            }
+        });
+        
+        console.log('SVG动画图标初始化完成');
+    } catch (error) {
+        console.error('SVG动画图标初始化失败:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initProductCarousel();
+    initStrengthAnimation();
+    initSVGAnimations();
+});

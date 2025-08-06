@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- 首页图片 -->
+    <url>
+        <loc>https://www.oberle-jiancai.com/</loc>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/lunbotu%20(1).jpg</image:loc>
+            <image:caption>欧伯乐系统门窗轮播图1</image:caption>
+            <image:title>高品质系统门窗展示</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/lunbotu%20(2).jpg</image:loc>
+            <image:caption>欧伯乐系统门窗轮播图2</image:caption>
+            <image:title>断桥铝门窗产品展示</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/lunbotu%20(3).jpg</image:loc>
+            <image:caption>欧伯乐系统门窗轮播图3</image:caption>
+            <image:title>智能门窗解决方案</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/lunbotu%20(4).jpg</image:loc>
+            <image:caption>欧伯乐系统门窗轮播图4</image:caption>
+            <image:title>门窗定制服务展示</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/lunbotu%20(5).png</image:loc>
+            <image:caption>欧伯乐系统门窗轮播图5</image:caption>
+            <image:title>专业门窗安装服务</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 产品材料图片 -->
+    <url>
+        <loc>https://www.oberle-jiancai.com/#products</loc>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/lvcai.jpg</image:loc>
+            <image:caption>优质铝材展示</image:caption>
+            <image:title>高品质铝合金材料</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/boli.png</image:loc>
+            <image:caption>门窗玻璃材料</image:caption>
+            <image:title>节能环保玻璃</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/wujin.png</image:loc>
+            <image:caption>门窗五金配件</image:caption>
+            <image:title>进口优质五金</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/shawang.jpg</image:loc>
+            <image:caption>纱窗产品展示</image:caption>
+            <image:title>高品质纱窗系统</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/geretiao.jpg</image:loc>
+            <image:caption>隔热条材料</image:caption>
+            <image:title>节能隔热条</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 公司展示图片 -->
+    <url>
+        <loc>https://www.oberle-jiancai.com/#about</loc>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/gongsi.jpg</image:loc>
+            <image:caption>江西欧伯乐建材科技有限公司</image:caption>
+            <image:title>公司厂房展示</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/anzhaung.jpg</image:loc>
+            <image:caption>专业安装服务</image:caption>
+            <image:title>门窗安装现场</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/shouhou.jpg</image:loc>
+            <image:caption>售后服务保障</image:caption>
+            <image:title>完善的售后服务体系</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 工程案例图片 -->
+    <url>
+        <loc>https://www.oberle-jiancai.com/#cases</loc>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/shipai%20(1).jpg</image:loc>
+            <image:caption>门窗安装实拍案例1</image:caption>
+            <image:title>住宅门窗安装效果</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/shipai%20(2).jpg</image:loc>
+            <image:caption>门窗安装实拍案例2</image:caption>
+            <image:title>商业建筑门窗案例</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/shipai%20(3).jpg</image:loc>
+            <image:caption>门窗安装实拍案例3</image:caption>
+            <image:title>高层建筑门窗安装</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/shipai%20(4).jpg</image:loc>
+            <image:caption>门窗安装实拍案例4</image:caption>
+            <image:title>别墅门窗定制案例</image:title>
+        </image:image>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/shipai%20(5).jpg</image:loc>
+            <image:caption>门窗安装实拍案例5</image:caption>
+            <image:title>办公楼门窗工程</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 联系我们页面 -->
+    <url>
+        <loc>https://www.oberle-jiancai.com/#contact</loc>
+        <image:image>
+            <image:loc>https://www.oberle-jiancai.com/images/WeChat.jpg</image:loc>
+            <image:caption>微信二维码</image:caption>
+            <image:title>扫码添加微信咨询</image:title>
+        </image:image>
+    </url>
+    
+</urlset>
