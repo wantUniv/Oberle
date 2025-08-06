@@ -600,6 +600,8 @@ function init() {
     initSmoothScroll();
     initFranchise();
     initPurchase();
+    initROICalculator();
+    initTechBlueprint();
 }
 
 // 页面加载完成后初始化
@@ -1150,3 +1152,530 @@ document.addEventListener('DOMContentLoaded', function() {
     initStrengthAnimation();
     initSVGAnimations();
 });
+
+// 收益计算器功能
+function initROICalculator() {
+    try {
+        const calculator = document.querySelector('.roi-calculator-section');
+        if (!calculator) return;
+        
+        const citySelect = document.getElementById('city-select');
+        const storeArea = document.getElementById('store-area');
+        const investmentAmount = document.getElementById('investment-amount');
+        const calculateBtn = document.getElementById('calculate-btn');
+        
+        const annualRevenueEl = document.getElementById('annual-revenue');
+        const roiPeriodEl = document.getElementById('roi-period');
+        const profitRateEl = document.getElementById('profit-rate');
+        
+        // 城市系数配置
+        const cityMultipliers = {
+            'tier1': { revenue: 1.5, cost: 1.3 },
+            'tier2': { revenue: 1.2, cost: 1.1 },
+            'tier3': { revenue: 1.0, cost: 1.0 },
+            'tier4': { revenue: 0.8, cost: 0.9 }
+        };
+        
+        function calculateROI() {
+            const cityType = citySelect.value;
+            const area = parseFloat(storeArea.value) || 0;
+            const investment = parseFloat(investmentAmount.value) || 0;
+            
+            const multiplier = cityMultipliers[cityType] || cityMultipliers.tier3;
+            
+            // 基础年收益计算（每平米基础收益2000元）
+            const baseRevenue = area * 2000;
+            const annualRevenue = baseRevenue * multiplier.revenue;
+            
+            // 年运营成本（投资额的30%）
+            const annualCost = investment * 10000 * 0.3 * multiplier.cost;
+            
+            // 年净利润
+            const annualProfit = annualRevenue - annualCost;
+            
+            // 投资回报周期（月）
+            const roiPeriod = annualProfit > 0 ? (investment * 10000 / annualProfit * 12) : 0;
+            
+            // 年利润率
+            const profitRate = investment > 0 ? (annualProfit / (investment * 10000) * 100) : 0;
+            
+            // 更新显示
+            updateCounterAnimation(annualRevenueEl, Math.round(annualRevenue / 10000), '万元');
+            updateCounterAnimation(roiPeriodEl, Math.round(roiPeriod), '个月');
+            updateCounterAnimation(profitRateEl, Math.round(profitRate), '%');
+        }
+        
+        function updateCounterAnimation(element, targetValue, suffix) {
+            if (!element) return;
+            
+            const startValue = 0;
+            const duration = 1500;
+            const startTime = performance.now();
+            
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // 使用缓动函数
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const currentValue = Math.round(startValue + (targetValue - startValue) * easeOutQuart);
+                
+                element.textContent = currentValue + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // 绑定事件
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', calculateROI);
+        }
+        
+        // 输入变化时自动计算
+        [citySelect, storeArea, investmentAmount].forEach(element => {
+            if (element) {
+                element.addEventListener('change', calculateROI);
+                element.addEventListener('input', calculateROI);
+            }
+        });
+        
+        // 初始计算
+        calculateROI();
+        
+        console.log('收益计算器初始化完成');
+    } catch (error) {
+        console.error('收益计算器初始化失败:', error);
+    }
+}
+
+// 3D技术图谱功能
+function initTechBlueprint() {
+    try {
+        const blueprint = document.querySelector('.tech-blueprint');
+        if (!blueprint) return;
+        
+        const techItems = blueprint.querySelectorAll('.tech-item');
+        const infoPanel = blueprint.querySelector('.tech-info-panel');
+        
+        // 技术点数据
+        const techData = {
+            'insulation': {
+                title: '隔热性能技术',
+                description: '采用先进的断桥铝技术和多腔体结构，实现卓越的隔热性能，有效降低能耗。',
+                features: ['断桥铝结构', '多腔体设计', '低传热系数', '节能环保'],
+                workingPrinciple: '通过断桥铝型材阻断热传导路径，配合多腔体结构形成空气隔热层，大幅降低热量传递。'
+            },
+            'soundproof': {
+                title: '隔音降噪技术',
+                description: '采用中空玻璃和多道密封技术，有效阻隔外界噪音，营造宁静舒适的室内环境。',
+                features: ['中空玻璃', '多道密封', '吸音材料', '降噪设计'],
+                workingPrinciple: '中空玻璃层间空气起到隔音作用，多道密封条阻断声音传播路径，实现优异隔音效果。'
+            },
+            'waterproof': {
+                title: '防水密封技术',
+                description: '采用等压排水原理和三道密封设计，确保在恶劣天气条件下的完全防水。',
+                features: ['等压排水', '三道密封', '防水胶条', '排水槽设计'],
+                workingPrinciple: '通过等压排水系统平衡内外压力，三道密封确保雨水无法渗透，排水槽及时排除积水。'
+            },
+            'windproof': {
+                title: '抗风压技术',
+                description: '采用加强型材和多点锁闭系统，确保在强风环境下的结构稳定性和安全性。',
+                features: ['加强型材', '多点锁闭', '钢质加强', '结构优化'],
+                workingPrinciple: '通过增加型材壁厚和钢质加强筋提升结构强度，多点锁闭系统分散风压载荷。'
+            },
+            'durability': {
+                title: '耐久性技术',
+                description: '采用氟碳喷涂和优质材料，确保产品在各种环境条件下的长期稳定性能。',
+                features: ['氟碳喷涂', '优质铝材', '抗老化', '耐腐蚀'],
+                workingPrinciple: '氟碳涂层提供优异的耐候性和抗腐蚀性，优质铝材确保结构长期稳定。'
+            },
+            'security': {
+                title: '安全防护技术',
+                description: '采用多点锁闭系统和防盗设计，提供全方位的安全防护，保障家居安全。',
+                features: ['多点锁闭', '防盗设计', '安全玻璃', '智能锁具'],
+                workingPrinciple: '多点锁闭系统增加锁闭点数量，防盗设计提升撬锁难度，安全玻璃防止暴力破坏。'
+            }
+        };
+        
+        // 技术项交互
+        techItems.forEach(item => {
+            const techId = item.getAttribute('data-tech');
+            
+            item.addEventListener('mouseenter', () => {
+                // 高亮当前技术项
+                techItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // 显示技术信息
+                if (techData[techId] && infoPanel) {
+                    const data = techData[techId];
+                    infoPanel.innerHTML = `
+                        <h4>${data.title}</h4>
+                        <p>${data.description}</p>
+                        <div class="working-principle">
+                            <h5>工作原理：</h5>
+                            <p>${data.workingPrinciple}</p>
+                        </div>
+                        <ul class="tech-features">
+                            ${data.features.map(feature => `<li><i class="fas fa-check"></i>${feature}</li>`).join('')}
+                        </ul>
+                    `;
+                    infoPanel.classList.add('visible');
+                }
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                // 移除悬停效果
+                item.classList.remove('active');
+            });
+            
+            item.addEventListener('click', () => {
+                // 点击时显示详细信息模态框
+                if (techData[techId]) {
+                    showTechModal(techData[techId]);
+                }
+            });
+        });
+        
+        // 隐藏信息面板
+        blueprint.addEventListener('mouseleave', () => {
+            if (infoPanel) {
+                infoPanel.classList.remove('visible');
+            }
+            techItems.forEach(i => i.classList.remove('active'));
+        });
+        
+        // 添加CSS动画样式
+        const style = document.createElement('style');
+        style.textContent = `
+            .tech-info-panel {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 20px;
+                max-width: 400px;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                color: #333;
+            }
+            
+            .tech-info-panel.visible {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .tech-info-panel h4 {
+                margin: 0 0 10px 0;
+                color: #007bff;
+                font-size: 18px;
+            }
+            
+            .tech-info-panel h5 {
+                margin: 15px 0 5px 0;
+                color: #333;
+                font-size: 14px;
+            }
+            
+            .tech-info-panel p {
+                margin: 0 0 10px 0;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+            
+            .tech-features {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 0 0;
+            }
+            
+            .tech-features li {
+                padding: 5px 0;
+                font-size: 13px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .tech-features li i {
+                color: #28a745;
+                font-size: 12px;
+            }
+            
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        console.log('3D技术图谱初始化完成');
+     } catch (error) {
+         console.error('3D技术图谱初始化失败:', error);
+     }
+ }
+ 
+ // 显示技术详情模态框
+ function showTechModal(techData) {
+     // 创建模态框HTML
+     const modalHTML = `
+         <div class="tech-modal-overlay" id="techModal">
+             <div class="tech-modal">
+                 <div class="tech-modal-header">
+                     <h3>${techData.title}</h3>
+                     <button class="tech-modal-close" onclick="closeTechModal()">
+                         <i class="fas fa-times"></i>
+                     </button>
+                 </div>
+                 <div class="tech-modal-body">
+                     <div class="tech-modal-content">
+                         <div class="tech-description">
+                             <h4>技术描述</h4>
+                             <p>${techData.description}</p>
+                         </div>
+                         <div class="working-principle">
+                             <h4>工作原理</h4>
+                             <p>${techData.workingPrinciple}</p>
+                         </div>
+                         <div class="tech-features">
+                             <h4>技术特点</h4>
+                             <ul>
+                                 ${techData.features.map(feature => `<li><i class="fas fa-check-circle"></i>${feature}</li>`).join('')}
+                             </ul>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     `;
+     
+     // 添加到页面
+     document.body.insertAdjacentHTML('beforeend', modalHTML);
+     
+     // 添加模态框样式
+     const modalStyle = document.createElement('style');
+     modalStyle.textContent = `
+         .tech-modal-overlay {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(0, 0, 0, 0.8);
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             z-index: 10000;
+             opacity: 0;
+             animation: fadeIn 0.3s ease forwards;
+         }
+         
+         .tech-modal {
+             background: white;
+             border-radius: 20px;
+             max-width: 600px;
+             width: 90%;
+             max-height: 80vh;
+             overflow-y: auto;
+             transform: scale(0.8);
+             animation: modalSlideIn 0.3s ease forwards;
+             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+         }
+         
+         .tech-modal-header {
+             padding: 25px 30px 20px;
+             border-bottom: 1px solid #eee;
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             background: linear-gradient(135deg, #007bff, #0056b3);
+             color: white;
+             border-radius: 20px 20px 0 0;
+         }
+         
+         .tech-modal-header h3 {
+             margin: 0;
+             font-size: 24px;
+             font-weight: 600;
+         }
+         
+         .tech-modal-close {
+             background: none;
+             border: none;
+             color: white;
+             font-size: 20px;
+             cursor: pointer;
+             padding: 5px;
+             border-radius: 50%;
+             transition: background 0.3s ease;
+         }
+         
+         .tech-modal-close:hover {
+             background: rgba(255, 255, 255, 0.2);
+         }
+         
+         .tech-modal-body {
+             padding: 30px;
+         }
+         
+         .tech-modal-content h4 {
+             color: #007bff;
+             margin: 0 0 15px 0;
+             font-size: 18px;
+             font-weight: 600;
+         }
+         
+         .tech-modal-content p {
+             line-height: 1.6;
+             color: #555;
+             margin-bottom: 25px;
+         }
+         
+         .tech-modal-content ul {
+             list-style: none;
+             padding: 0;
+         }
+         
+         .tech-modal-content li {
+             padding: 8px 0;
+             display: flex;
+             align-items: center;
+             gap: 10px;
+             color: #333;
+         }
+         
+         .tech-modal-content li i {
+             color: #28a745;
+             font-size: 16px;
+         }
+         
+         @keyframes fadeIn {
+             to { opacity: 1; }
+         }
+         
+         @keyframes modalSlideIn {
+             to { transform: scale(1); }
+         }
+         
+         @media (max-width: 768px) {
+             .tech-modal {
+                 width: 95%;
+                 margin: 20px;
+             }
+             
+             .tech-modal-header {
+                 padding: 20px;
+             }
+             
+             .tech-modal-body {
+                 padding: 20px;
+             }
+         }
+     `;
+     document.head.appendChild(modalStyle);
+     
+     // 点击遮罩层关闭模态框
+     document.getElementById('techModal').addEventListener('click', (e) => {
+         if (e.target.classList.contains('tech-modal-overlay')) {
+             closeTechModal();
+         }
+     });
+ }
+ 
+ // 关闭技术模态框
+ function closeTechModal() {
+     const modal = document.getElementById('techModal');
+     if (modal) {
+         modal.style.animation = 'fadeOut 0.3s ease forwards';
+         setTimeout(() => {
+             modal.remove();
+         }, 300);
+     }
+ }
+ 
+ // 添加关闭动画
+ const closeAnimationStyle = document.createElement('style');
+ closeAnimationStyle.textContent = `
+     @keyframes fadeOut {
+         to { opacity: 0; }
+     }
+ `;
+ document.head.appendChild(closeAnimationStyle);
+
+// 显示技术详情模态框
+function showTechModal(techData) {
+    // 创建模态框
+    const modal = document.createElement('div');
+    modal.className = 'tech-modal';
+    modal.innerHTML = `
+        <div class="tech-modal-content">
+            <span class="tech-modal-close">&times;</span>
+            <h3>${techData.title}</h3>
+            <p>${techData.description}</p>
+            <div class="tech-features-grid">
+                ${techData.features.map(feature => `
+                    <div class="feature-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>${feature}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    // 添加样式
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // 显示动画
+    setTimeout(() => {
+        modal.style.opacity = '1';
+    }, 10);
+    
+    // 关闭功能
+    const closeBtn = modal.querySelector('.tech-modal-close');
+    const closeModal = () => {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+        }, 300);
+    };
+    
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    
+    // ESC键关闭
+    const handleEsc = (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+            document.removeEventListener('keydown', handleEsc);
+        }
+    };
+    document.addEventListener('keydown', handleEsc);
+}

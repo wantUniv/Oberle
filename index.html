@@ -242,7 +242,14 @@
                 <li><a href="#products" data-zh="选材与售后" data-en="Materials & Service">选材与售后</a></li>
                 <li><a href="#about" data-zh="关于我们" data-en="About Us">关于我们</a></li>
                 <li><a href="#cases" data-zh="工程案例" data-en="Projects">工程案例</a></li>
-                <li><a href="#franchise" data-zh="招商加盟" data-en="Franchise">招商加盟</a></li>
+                <li class="dropdown">
+                    <a href="#franchise" data-zh="招商加盟" data-en="Franchise" class="dropdown-toggle">招商加盟 <i class="fa fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#franchise-policy" data-zh="加盟政策" data-en="Franchise Policy">加盟政策</a></li>
+                        <li><a href="#roi-calculator" data-zh="收益计算器" data-en="ROI Calculator">收益计算器</a></li>
+                        <li><a href="#franchise-cases" data-zh="成功案例" data-en="Success Cases">成功案例</a></li>
+                    </ul>
+                </li>
                 <li><a href="#purchase" data-zh="如何购买" data-en="How to Buy">如何购买</a></li>
                 <li><a href="#contact" data-zh="联系我们" data-en="Contact">联系我们</a></li>
             </ul>
@@ -1010,6 +1017,153 @@
         </div>
     </section>
 
+    <!-- 3D技术图谱 -->
+    <section id="tech-blueprint" class="tech-blueprint" aria-labelledby="tech-blueprint-title">
+        <div class="container">
+            <h2 id="tech-blueprint-title" class="section-title" data-zh="3D交互式技术图谱" data-en="3D Interactive Technology Blueprint">3D交互式技术图谱</h2>
+            <p class="section-subtitle" data-zh="点击技术参数，深入了解门窗工作原理" data-en="Click on technical parameters to learn more about window working principles">点击技术参数，深入了解门窗工作原理</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item" data-tech="insulation">
+                    <div class="tech-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <h4 data-zh="隔热性能" data-en="Thermal Insulation">隔热性能</h4>
+                    <p data-zh="K值低至1.2W/(m²·K)，节能效果显著" data-en="K-value as low as 1.2W/(m²·K), significant energy saving effect">K值低至1.2W/(m²·K)，节能效果显著</p>
+                    <div class="tech-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">传热系数</span>
+                            <span class="spec-value">1.2W/(m²·K)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">节能等级</span>
+                            <span class="spec-value">A+++</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">保温层厚度</span>
+                            <span class="spec-value">24mm</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-item" data-tech="soundproof">
+                    <div class="tech-icon">
+                        <i class="fas fa-volume-mute"></i>
+                    </div>
+                    <h4 data-zh="隔音降噪" data-en="Sound Insulation">隔音降噪</h4>
+                    <p data-zh="隔音量达40dB，营造宁静居住环境" data-en="Sound insulation up to 40dB, creating a quiet living environment">隔音量达40dB，营造宁静居住环境</p>
+                    <div class="tech-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">隔音等级</span>
+                            <span class="spec-value">40dB</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">玻璃厚度</span>
+                            <span class="spec-value">5+12A+5</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">密封胶条</span>
+                            <span class="spec-value">三元乙丙</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-item" data-tech="waterproof">
+                    <div class="tech-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4 data-zh="防水密封" data-en="Waterproof Sealing">防水密封</h4>
+                    <p data-zh="防水等级达9级，有效阻挡雨水渗透" data-en="Waterproof rating up to level 9, effectively blocking rainwater penetration">防水等级达9级，有效阻挡雨水渗透</p>
+                    <div class="tech-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">防水等级</span>
+                            <span class="spec-value">9级</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">密封道数</span>
+                            <span class="spec-value">三道密封</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">排水系统</span>
+                            <span class="spec-value">等压排水</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-item" data-tech="windproof">
+                    <div class="tech-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h4 data-zh="抗风压性" data-en="Wind Resistance">抗风压性</h4>
+                    <p data-zh="抗风压等级达9级，抵御强风侵袭" data-en="Wind resistance rating up to level 9, resisting strong wind attacks">抗风压等级达9级，抵御强风侵袭</p>
+                    <div class="tech-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">抗风压等级</span>
+                            <span class="spec-value">9级</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">型材壁厚</span>
+                            <span class="spec-value">2.0mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">加强筋</span>
+                            <span class="spec-value">钢质加强</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-item" data-tech="durability">
+                    <div class="tech-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 data-zh="耐久性能" data-en="Durability">耐久性能</h4>
+                    <p data-zh="使用寿命长达50年，品质经久耐用" data-en="Service life up to 50 years, durable quality">使用寿命长达50年，品质经久耐用</p>
+                    <div class="tech-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">使用寿命</span>
+                            <span class="spec-value">50年</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">表面处理</span>
+                            <span class="spec-value">氟碳喷涂</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">耐候等级</span>
+                            <span class="spec-value">A级</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tech-item" data-tech="security">
+                    <div class="tech-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4 data-zh="安全防护" data-en="Security Protection">安全防护</h4>
+                    <p data-zh="多点锁闭系统，安全防护更可靠" data-en="Multi-point locking system, more reliable security protection">多点锁闭系统，安全防护更可靠</p>
+                    <div class="tech-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">锁闭点数</span>
+                            <span class="spec-value">5点锁闭</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">防盗等级</span>
+                            <span class="spec-value">A级</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">五金品牌</span>
+                            <span class="spec-value">德国ROTO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tech-info-panel">
+                <h4>技术详情</h4>
+                <p>将鼠标悬停在技术参数上查看详细信息</p>
+            </div>
+        </div>
+    </section>
+
     <!-- 招商加盟 -->
     <section id="franchise" class="franchise-section" aria-labelledby="franchise-title">
         <div class="container">
@@ -1100,6 +1254,56 @@
                     </div>
                 </div>
                 
+                <!-- 收益计算器 -->
+                <div id="roi-calculator" class="roi-calculator-section">
+                    <h3 data-zh="加盟收益计算器" data-en="Franchise ROI Calculator">加盟收益计算器</h3>
+                    <div class="calculator-container">
+                        <div class="calculator-form">
+                            <div class="form-group">
+                                <label for="city-select" data-zh="选择城市" data-en="Select City">选择城市</label>
+                                <select id="city-select" class="form-control">
+                                    <option value="tier1" data-zh="一线城市（北上广深）" data-en="Tier 1 Cities">一线城市（北上广深）</option>
+                                    <option value="tier2" data-zh="二线城市（省会城市）" data-en="Tier 2 Cities">二线城市（省会城市）</option>
+                                    <option value="tier3" data-zh="三线城市（地级市）" data-en="Tier 3 Cities">三线城市（地级市）</option>
+                                    <option value="tier4" data-zh="四线城市（县级市）" data-en="Tier 4 Cities">四线城市（县级市）</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="store-area" data-zh="店面面积（平方米）" data-en="Store Area (sqm)">店面面积（平方米）</label>
+                                <input type="number" id="store-area" class="form-control" min="50" max="1000" value="200" placeholder="请输入店面面积">
+                            </div>
+                            <div class="form-group">
+                                <label for="investment-amount" data-zh="投资金额（万元）" data-en="Investment Amount (10k RMB)">投资金额（万元）</label>
+                                <input type="number" id="investment-amount" class="form-control" min="10" max="500" value="50" placeholder="请输入投资金额">
+                            </div>
+                            <button id="calculate-btn" class="calculate-btn" data-zh="计算收益" data-en="Calculate ROI">计算收益</button>
+                        </div>
+                        <div class="calculator-result">
+                            <div class="result-card">
+                                <h4 data-zh="预估年收益" data-en="Estimated Annual Revenue">预估年收益</h4>
+                                <div class="result-value">
+                                    <span id="annual-revenue" class="counter-animation" data-target="0" data-suffix="万元">0万元</span>
+                                </div>
+                            </div>
+                            <div class="result-card">
+                                <h4 data-zh="投资回报周期" data-en="ROI Period">投资回报周期</h4>
+                                <div class="result-value">
+                                    <span id="roi-period" class="counter-animation" data-target="0" data-suffix="个月">0个月</span>
+                                </div>
+                            </div>
+                            <div class="result-card">
+                                <h4 data-zh="年利润率" data-en="Annual Profit Rate">年利润率</h4>
+                                <div class="result-value">
+                                    <span id="profit-rate" class="counter-animation" data-target="0" data-suffix="%">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calculator-disclaimer">
+                        <p data-zh="*以上数据仅供参考，实际收益因地区、经营能力等因素而异" data-en="*The above data is for reference only, actual returns may vary by region, management capability and other factors">*以上数据仅供参考，实际收益因地区、经营能力等因素而异</p>
+                    </div>
+                </div>
+
                 <!-- 加盟支持 -->
                 <div class="franchise-support">
                     <h3 data-zh="加盟支持" data-en="Franchise Support">加盟支持</h3>

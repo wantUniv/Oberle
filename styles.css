@@ -4485,3 +4485,340 @@ a:focus, button:focus, input:focus, textarea:focus {
 @media (prefers-color-scheme: dark) {
     /* 这里可以添加暗色模式样式，目前保持原样 */
 }
+
+/* 导航下拉菜单 */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-toggle i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle i {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    margin: 0 8px;
+}
+
+.dropdown-menu a:hover {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    transform: translateX(5px);
+}
+
+/* 收益计算器样式 */
+.roi-calculator-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px 0;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.calculator-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.calculate-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.3);
+}
+
+.calculate-btn:active {
+    transform: translateY(0);
+}
+
+.calculator-result {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.result-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.result-card h4 {
+    margin: 0 0 15px 0;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.result-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #007bff;
+    margin: 10px 0;
+}
+
+.calculator-disclaimer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.calculator-disclaimer p {
+    margin: 0;
+    color: #856404;
+    font-size: 14px;
+}
+
+/* 3D技术图谱样式 */
+.tech-blueprint {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-blueprint::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+    pointer-events: none;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.tech-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.tech-item:hover::before {
+    left: 100%;
+}
+
+.tech-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #007bff;
+    box-shadow: 0 20px 40px rgba(0, 123, 255, 0.2);
+}
+
+.tech-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.tech-item:hover .tech-icon {
+    transform: rotateY(360deg);
+    background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.tech-item h4 {
+    color: white;
+    margin: 15px 0 10px;
+    font-size: 18px;
+}
+
+.tech-item p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.tech-specs {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 13px;
+}
+
+.spec-label {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.spec-value {
+    color: #007bff;
+    font-weight: 600;
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+    .calculator-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .roi-calculator-section {
+        padding: 20px;
+    }
+    
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: transparent;
+        backdrop-filter: none;
+    }
+    
+    .dropdown-menu a {
+        padding: 8px 15px;
+        margin: 0;
+    }
+}
