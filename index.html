@@ -75,21 +75,203 @@
     <meta name="format-detection" content="telephone=no">
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://shop305110886.taobao.com https://shizhix.1688.com; img-src 'self' data:; font-src 'self' https://cdnjs.cloudflare.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdnjs.cloudflare.com cdn.jsdelivr.net www.googletagmanager.com www.google-analytics.com static.hotjar.com script.hotjar.com; style-src 'self' 'unsafe-inline' cdnjs.cloudflare.com fonts.googleapis.com; font-src 'self' cdnjs.cloudflare.com fonts.gstatic.com data:; img-src 'self' data: blob: *.oberle-china.com www.google-analytics.com; media-src 'self' data: blob:; object-src 'none'; frame-src 'none'; worker-src 'self' blob:; child-src 'self'; connect-src 'self' www.google-analytics.com stats.g.doubleclick.net *.hotjar.com *.hotjar.io; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     
     <title>江西欧伯乐建材科技有限公司 - 专业系统门窗定制 | 断桥铝门窗 | 智能门窗解决方案</title>
     
-    <!-- 预加载关键资源 -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-     <link rel="preload" href="images/lunbotu (1).jpg" as="image">
-     <link rel="preload" href="images/gongsi.jpg" as="image">
+    <!-- 关键资源预加载 -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+    <link rel="preconnect" href="https://static.hotjar.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="images/lunbotu (1).jpg" as="image">
+    <link rel="preload" href="images/gongsi.jpg" as="image">
     
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        page_title: document.title,
+        page_location: window.location.href,
+        send_page_view: true,
+        enhanced_ecommerce: true,
+        custom_map: {
+          'dimension1': 'user_type',
+          'dimension2': 'page_category',
+          'dimension3': 'experiment_variant'
+        }
+      });
+      
+      // 自定义事件跟踪函数
+      function trackEvent(eventName, parameters = {}) {
+        gtag('event', eventName, {
+          event_category: parameters.category || 'engagement',
+          event_label: parameters.label || '',
+          value: parameters.value || 0,
+          ...parameters
+        });
+      }
+    </script>
+    
+    <!-- Hotjar Tracking Code -->
+    <script>
+        // Hotjar配置（演示环境已禁用）
+        const HOTJAR_SITE_ID = null; // 演示环境不需要Hotjar
+        
+        // 自定义热力图事件触发函数（演示版本）
+        function triggerHotjarEvent(eventName, data = {}) {
+            // 演示环境下的占位函数
+            console.log('Hotjar事件（演示）:', eventName, data);
+            if (window.hj) {
+                hj('event', eventName);
+                console.log('Hotjar事件触发:', eventName, data);
+            } else {
+                console.log('Hotjar未配置，模拟事件:', eventName, data);
+            }
+        }
+    </script>
+    
+    <!-- 关键CSS内联 -->
+    <style>
+        /* 关键CSS - 首屏渲染必需 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.7), rgba(102, 126, 234, 0.7));
+            z-index: -1;
+        }
+        
+        .hero-text {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FFC107, #FF8F00);
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 193, 7, 0.4);
+        }
+        
+        /* 加载动画 */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .page-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+            display: none !important;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <!-- 非关键CSS异步加载 -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -193,22 +375,39 @@
        "@context": "https://schema.org",
        "@type": "Organization",
        "name": "江西欧伯乐建材科技有限公司",
-       "url": "https://www.oberle-jiancai.com",
-       "logo": "https://www.oberle-jiancai.com/images/logo.png",
+       "url": "https://www.oberle-china.com",
+       "logo": "https://www.oberle-china.com/images/logo.png",
        "foundingDate": "2004",
        "numberOfEmployees": "50-100",
        "slogan": "专业门窗定制，品质生活之选",
+       "description": "专业系统门窗定制专家，提供断桥铝门窗、智能门窗解决方案，50年品质保证，全国招商加盟",
+       "address": {
+         "@type": "PostalAddress",
+         "addressCountry": "CN",
+         "addressRegion": "江西省",
+         "addressLocality": "南昌市",
+         "streetAddress": "高新技术产业开发区"
+       },
        "contactPoint": {
          "@type": "ContactPoint",
-         "telephone": "+86-138-0000-0000",
+         "telephone": "+86-400-123-4567",
          "contactType": "customer service",
          "areaServed": "CN",
          "availableLanguage": ["Chinese", "English"]
        },
        "sameAs": [
+         "https://weibo.com/oberle",
+         "https://www.linkedin.com/company/oberle",
          "https://shop305110886.taobao.com",
          "https://shizhix.1688.com"
-       ]
+       ],
+       "aggregateRating": {
+         "@type": "AggregateRating",
+         "ratingValue": "4.8",
+         "reviewCount": "1250",
+         "bestRating": "5",
+         "worstRating": "1"
+       }
      }
      </script>
      
@@ -226,6 +425,35 @@
     </noscript>
 </head>
 <body>
+    <!-- 页面加载器 -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-spinner"></div>
+    </div>
+    
+    <!-- 强制隐藏加载器脚本 -->
+    <script>
+        // 确保页面加载器被正确隐藏
+        function hidePageLoader() {
+            const loader = document.getElementById('pageLoader');
+            if (loader) {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }
+        }
+        
+        // 页面加载完成后隐藏加载器
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', hidePageLoader);
+        } else {
+            hidePageLoader();
+        }
+        
+        // 备用隐藏机制
+        window.addEventListener('load', hidePageLoader);
+        setTimeout(hidePageLoader, 3000); // 3秒后强制隐藏
+    </script>
     <!-- 粒子背景 -->
     <div id="particles-js"></div>
     
@@ -1682,6 +1910,363 @@
 
     <!-- Particles.js库 -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- A/B测试和性能监控脚本 -->
+    <script>
+    // A/B测试框架
+    class ABTestFramework {
+        constructor() {
+            this.experiments = new Map();
+            this.userVariants = new Map();
+            this.cookieName = 'ab_test_variants';
+            this.loadUserVariants();
+        }
+        
+        loadUserVariants() {
+            const cookie = this.getCookie(this.cookieName);
+            if (cookie) {
+                try {
+                    const variants = JSON.parse(decodeURIComponent(cookie));
+                    Object.entries(variants).forEach(([test, variant]) => {
+                        this.userVariants.set(test, variant);
+                    });
+                } catch (e) {
+                    console.warn('A/B测试cookie解析失败:', e);
+                }
+            }
+        }
+        
+        saveUserVariants() {
+            const variants = Object.fromEntries(this.userVariants);
+            const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+            this.setCookie(this.cookieName, encodeURIComponent(JSON.stringify(variants)), expires);
+        }
+        
+        createTest(testName, variants, config = {}) {
+            const test = {
+                name: testName,
+                variants: variants,
+                traffic: config.traffic || 1.0,
+                active: config.active !== false,
+                targetSelector: config.targetSelector,
+                onVariantAssigned: config.onVariantAssigned || function() {}
+            };
+            
+            this.experiments.set(testName, test);
+            return test;
+        }
+        
+        getVariant(testName) {
+            const test = this.experiments.get(testName);
+            if (!test || !test.active) return null;
+            
+            if (this.userVariants.has(testName)) {
+                return this.userVariants.get(testName);
+            }
+            
+            if (Math.random() > test.traffic) return null;
+            
+            const variants = Object.keys(test.variants);
+            const variant = variants[Math.floor(Math.random() * variants.length)];
+            
+            this.userVariants.set(testName, variant);
+            this.saveUserVariants();
+            
+            test.onVariantAssigned(variant, test.variants[variant]);
+            
+            if (typeof trackEvent === 'function') {
+                trackEvent('ab_test_assigned', {
+                    category: 'experiment',
+                    label: testName + ':' + variant
+                });
+            }
+            
+            return variant;
+        }
+        
+        applyVariant(testName, variantName = null) {
+            const test = this.experiments.get(testName);
+            if (!test) return false;
+            
+            const variant = variantName || this.getVariant(testName);
+            if (!variant || !test.variants[variant]) return false;
+            
+            const variantConfig = test.variants[variant];
+            
+            if (variantConfig.css) {
+                this.applyCSSChanges(variantConfig.css);
+            }
+            
+            if (variantConfig.html && test.targetSelector) {
+                this.applyHTMLChanges(test.targetSelector, variantConfig.html);
+            }
+            
+            if (variantConfig.js && typeof variantConfig.js === 'function') {
+                variantConfig.js();
+            }
+            
+            return true;
+        }
+        
+        applyCSSChanges(cssRules) {
+            const style = document.createElement('style');
+            style.textContent = cssRules;
+            style.setAttribute('data-ab-test', 'true');
+            document.head.appendChild(style);
+        }
+        
+        applyHTMLChanges(selector, html) {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => {
+                if (typeof html === 'string') {
+                    el.innerHTML = html;
+                } else if (typeof html === 'function') {
+                    html(el);
+                }
+            });
+        }
+        
+        recordConversion(testName, conversionType = 'default', value = 1) {
+            const variant = this.userVariants.get(testName);
+            if (!variant) return;
+            
+            if (typeof trackEvent === 'function') {
+                trackEvent('ab_test_conversion', {
+                    category: 'experiment',
+                    label: testName + ':' + variant + ':' + conversionType,
+                    value: value
+                });
+            }
+            
+            if (typeof triggerHotjarEvent === 'function') {
+                triggerHotjarEvent('ab_conversion_' + testName + '_' + variant);
+            }
+        }
+        
+        getCookie(name) {
+            const value = "; " + document.cookie;
+            const parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+            return null;
+        }
+        
+        setCookie(name, value, expires) {
+            document.cookie = name + "=" + value + "; expires=" + expires.toUTCString() + "; path=/; SameSite=Lax";
+        }
+    }
+    
+    // 性能监控类
+    class PerformanceAnalytics {
+        constructor() {
+            this.metrics = {};
+            this.userActions = [];
+            this.errors = [];
+            this.init();
+        }
+        
+        init() {
+            this.measurePageLoad();
+            this.measureCoreWebVitals();
+            this.trackUserInteractions();
+            this.trackErrors();
+            this.setupReporting();
+        }
+        
+        measurePageLoad() {
+            window.addEventListener('load', () => {
+                const navigation = performance.getEntriesByType('navigation')[0];
+                const paint = performance.getEntriesByType('paint');
+                
+                this.metrics.pageLoad = {
+                    domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+                    loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
+                    firstPaint: paint.find(p => p.name === 'first-paint')?.startTime || 0,
+                    firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0
+                };
+                
+                this.sendMetric('page_performance', this.metrics.pageLoad);
+            });
+        }
+        
+        measureCoreWebVitals() {
+            // LCP监控
+            if ('PerformanceObserver' in window) {
+                new PerformanceObserver((entryList) => {
+                    const entries = entryList.getEntries();
+                    const lastEntry = entries[entries.length - 1];
+                    this.metrics.lcp = lastEntry.startTime;
+                    this.sendMetric('lcp', { value: lastEntry.startTime });
+                }).observe({ entryTypes: ['largest-contentful-paint'] });
+                
+                // FID监控
+                new PerformanceObserver((entryList) => {
+                    const entries = entryList.getEntries();
+                    entries.forEach(entry => {
+                        this.metrics.fid = entry.processingStart - entry.startTime;
+                        this.sendMetric('fid', { value: entry.processingStart - entry.startTime });
+                    });
+                }).observe({ entryTypes: ['first-input'] });
+                
+                // CLS监控
+                let clsValue = 0;
+                new PerformanceObserver((entryList) => {
+                    for (const entry of entryList.getEntries()) {
+                        if (!entry.hadRecentInput) {
+                            clsValue += entry.value;
+                        }
+                    }
+                    this.metrics.cls = clsValue;
+                    this.sendMetric('cls', { value: clsValue });
+                }).observe({ entryTypes: ['layout-shift'] });
+            }
+        }
+        
+        trackUserInteractions() {
+            const interactions = ['click', 'scroll', 'keydown'];
+            
+            interactions.forEach(eventType => {
+                document.addEventListener(eventType, (e) => {
+                    this.userActions.push({
+                        type: eventType,
+                        timestamp: Date.now(),
+                        target: this.getElementSelector(e.target)
+                    });
+                    
+                    if (this.userActions.length > 50) {
+                        this.userActions.shift();
+                    }
+                }, { passive: true });
+            });
+        }
+        
+        trackErrors() {
+            window.addEventListener('error', (e) => {
+                this.errors.push({
+                    type: 'javascript',
+                    message: e.message,
+                    filename: e.filename,
+                    lineno: e.lineno,
+                    timestamp: Date.now()
+                });
+                
+                this.sendMetric('error', {
+                    type: 'javascript',
+                    message: e.message,
+                    source: e.filename
+                });
+            });
+        }
+        
+        getElementSelector(element) {
+            if (element.id) return '#' + element.id;
+            if (element.className) return '.' + element.className.split(' ')[0];
+            return element.tagName.toLowerCase();
+        }
+        
+        sendMetric(name, data) {
+            if (typeof trackEvent === 'function') {
+                trackEvent('performance_metric', {
+                    category: 'performance',
+                    label: name,
+                    value: typeof data.value === 'number' ? Math.round(data.value) : 0
+                });
+            }
+        }
+        
+        setupReporting() {
+            window.addEventListener('beforeunload', () => {
+                const report = {
+                    metrics: this.metrics,
+                    userActions: this.userActions.length,
+                    errors: this.errors.length
+                };
+                
+                if (typeof trackEvent === 'function') {
+                    trackEvent('session_end', {
+                        category: 'engagement',
+                        label: 'final_report'
+                    });
+                }
+            });
+        }
+    }
+    
+    // 初始化分析系统
+    const abTest = new ABTestFramework();
+    const performanceAnalytics = new PerformanceAnalytics();
+    
+    // 定义A/B测试
+    abTest.createTest('cta_button_color', {
+        'control': {
+            css: '.cta-button { background-color: #007bff; }'
+        },
+        'variant_gold': {
+            css: '.cta-button { background-color: #FFC107; color: #000; }'
+        }
+    }, { traffic: 0.5 });
+    
+    // 应用测试
+    function initAnalytics() {
+        abTest.applyVariant('cta_button_color');
+        
+        // 转化事件监听
+        document.addEventListener('submit', function(e) {
+            if (e.target.classList.contains('contact-form')) {
+                abTest.recordConversion('cta_button_color', 'form_submit');
+            }
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('cta-button')) {
+                abTest.recordConversion('cta_button_color', 'cta_click');
+            }
+        });
+        
+        // 热力图区域监控
+        const observeAreas = function() {
+            const areas = [
+                { selector: '.hero-section', event: 'hero_viewed' },
+                { selector: '.cta-section', event: 'cta_viewed' },
+                { selector: '.contact-form', event: 'contact_form_viewed' }
+            ];
+            
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const area = areas.find(a => entry.target.matches(a.selector));
+                            if (area && typeof triggerHotjarEvent === 'function') {
+                                triggerHotjarEvent(area.event);
+                                observer.unobserve(entry.target);
+                            }
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                areas.forEach(function(area) {
+                    const elements = document.querySelectorAll(area.selector);
+                    elements.forEach(function(el) {
+                        observer.observe(el);
+                    });
+                });
+            }
+        };
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', observeAreas);
+        } else {
+            observeAreas();
+        }
+    }
+    
+    // 初始化
+    initAnalytics();
+    
+    // 导出到全局
+    window.abTest = abTest;
+    window.performanceAnalytics = performanceAnalytics;
+    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>

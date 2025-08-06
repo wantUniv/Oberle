@@ -1,3 +1,156 @@
+// 性能监控和优化
+class PerformanceMonitor {
+    constructor() {
+        this.metrics = {};
+        this.init();
+    }
+
+    init() {
+        // 监控页面加载性能
+        this.measurePageLoad();
+        // 监控Core Web Vitals
+        this.measureCoreWebVitals();
+        // 监控资源加载
+        this.measureResourceLoading();
+    }
+
+    measurePageLoad() {
+        window.addEventListener('load', () => {
+            const navigation = performance.getEntriesByType('navigation')[0];
+            this.metrics.pageLoad = {
+                domContentLoaded: navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart,
+                loadComplete: navigation.loadEventEnd - navigation.loadEventStart,
+                firstPaint: this.getFirstPaint(),
+                firstContentfulPaint: this.getFirstContentfulPaint()
+            };
+            
+            // 隐藏加载器
+            this.hidePageLoader();
+            
+            console.log('页面性能指标:', this.metrics.pageLoad);
+        });
+    }
+
+    getFirstPaint() {
+        const paintEntries = performance.getEntriesByType('paint');
+        const firstPaint = paintEntries.find(entry => entry.name === 'first-paint');
+        return firstPaint ? firstPaint.startTime : null;
+    }
+
+    getFirstContentfulPaint() {
+        const paintEntries = performance.getEntriesByType('paint');
+        const fcp = paintEntries.find(entry => entry.name === 'first-contentful-paint');
+        return fcp ? fcp.startTime : null;
+    }
+
+    measureCoreWebVitals() {
+        // Largest Contentful Paint (LCP)
+        if ('PerformanceObserver' in window) {
+            new PerformanceObserver((entryList) => {
+                const entries = entryList.getEntries();
+                const lastEntry = entries[entries.length - 1];
+                this.metrics.lcp = lastEntry.startTime;
+                console.log('LCP:', lastEntry.startTime);
+            }).observe({ entryTypes: ['largest-contentful-paint'] });
+
+            // First Input Delay (FID)
+            new PerformanceObserver((entryList) => {
+                const entries = entryList.getEntries();
+                entries.forEach(entry => {
+                    this.metrics.fid = entry.processingStart - entry.startTime;
+                    console.log('FID:', entry.processingStart - entry.startTime);
+                });
+            }).observe({ entryTypes: ['first-input'] });
+
+            // Cumulative Layout Shift (CLS)
+            let clsValue = 0;
+            new PerformanceObserver((entryList) => {
+                for (const entry of entryList.getEntries()) {
+                    if (!entry.hadRecentInput) {
+                        clsValue += entry.value;
+                    }
+                }
+                this.metrics.cls = clsValue;
+                console.log('CLS:', clsValue);
+            }).observe({ entryTypes: ['layout-shift'] });
+        }
+    }
+
+    measureResourceLoading() {
+        window.addEventListener('load', () => {
+            const resources = performance.getEntriesByType('resource');
+            const slowResources = resources.filter(resource => resource.duration > 1000);
+            
+            if (slowResources.length > 0) {
+                console.warn('慢加载资源:', slowResources.map(r => ({ name: r.name, duration: r.duration })));
+            }
+        });
+    }
+
+    hidePageLoader() {
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 300);
+        }
+    }
+}
+
+// 图片懒加载优化
+class LazyImageLoader {
+    constructor() {
+        this.imageObserver = null;
+        this.init();
+    }
+
+    init() {
+        if ('IntersectionObserver' in window) {
+            this.imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        this.loadImage(img);
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.01
+            });
+
+            this.observeImages();
+        } else {
+            // 降级处理
+            this.loadAllImages();
+        }
+    }
+
+    observeImages() {
+        const lazyImages = document.querySelectorAll('img[data-src], [data-background-image]');
+        lazyImages.forEach(img => this.imageObserver.observe(img));
+    }
+
+    loadImage(img) {
+        if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+        }
+        if (img.dataset.backgroundImage) {
+            img.style.backgroundImage = `url(${img.dataset.backgroundImage})`;
+            img.classList.add('loaded');
+        }
+    }
+
+    loadAllImages() {
+        const lazyImages = document.querySelectorAll('img[data-src], [data-background-image]');
+        lazyImages.forEach(img => this.loadImage(img));
+    }
+}
+
 // 兼容性检查和polyfill
 (function() {
     'use strict';
@@ -895,11 +1048,19 @@ function initLanguageSwitch() {
 // 产品轮播功能
 function initProductCarousel() {
     const slides = document.querySelectorAll('.product-slide');
+    
+    // 如果没有找到产品轮播图元素，直接返回
+    if (!slides || slides.length === 0) {
+        return;
+    }
+    
     let currentSlide = 0;
     
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
+        if (slides[index]) {
+            slides[index].classList.add('active');
+        }
     }
     
     function nextSlide() {
@@ -909,6 +1070,9 @@ function initProductCarousel() {
     
     // 自动轮播
     setInterval(nextSlide, 4000);
+    
+    // 初始化显示第一张
+    showSlide(0);
     
     // VR体验按钮点击事件
     const vrBtn = document.querySelector('.vr-btn');
@@ -1148,10 +1312,37 @@ function initSVGAnimations() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // 初始化性能监控
+    const performanceMonitor = new PerformanceMonitor();
+    
+    // 初始化懒加载
+    const lazyLoader = new LazyImageLoader();
+    
+    // 初始化现有功能
     initProductCarousel();
     initStrengthAnimation();
     initSVGAnimations();
+    initROICalculator();
+    initTechBlueprint();
 });
+
+// 异步加载非关键脚本
+function loadNonCriticalScripts() {
+    const scripts = [
+        'https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'
+    ];
+    
+    scripts.forEach(src => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onerror = () => console.warn('Failed to load script:', src);
+        document.head.appendChild(script);
+    });
+}
+
+// 页面完全加载后加载非关键脚本
+window.addEventListener('load', loadNonCriticalScripts);
 
 // 收益计算器功能
 function initROICalculator() {
@@ -1425,194 +1616,7 @@ function initTechBlueprint() {
      }
  }
  
- // 显示技术详情模态框
- function showTechModal(techData) {
-     // 创建模态框HTML
-     const modalHTML = `
-         <div class="tech-modal-overlay" id="techModal">
-             <div class="tech-modal">
-                 <div class="tech-modal-header">
-                     <h3>${techData.title}</h3>
-                     <button class="tech-modal-close" onclick="closeTechModal()">
-                         <i class="fas fa-times"></i>
-                     </button>
-                 </div>
-                 <div class="tech-modal-body">
-                     <div class="tech-modal-content">
-                         <div class="tech-description">
-                             <h4>技术描述</h4>
-                             <p>${techData.description}</p>
-                         </div>
-                         <div class="working-principle">
-                             <h4>工作原理</h4>
-                             <p>${techData.workingPrinciple}</p>
-                         </div>
-                         <div class="tech-features">
-                             <h4>技术特点</h4>
-                             <ul>
-                                 ${techData.features.map(feature => `<li><i class="fas fa-check-circle"></i>${feature}</li>`).join('')}
-                             </ul>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     `;
-     
-     // 添加到页面
-     document.body.insertAdjacentHTML('beforeend', modalHTML);
-     
-     // 添加模态框样式
-     const modalStyle = document.createElement('style');
-     modalStyle.textContent = `
-         .tech-modal-overlay {
-             position: fixed;
-             top: 0;
-             left: 0;
-             width: 100%;
-             height: 100%;
-             background: rgba(0, 0, 0, 0.8);
-             display: flex;
-             justify-content: center;
-             align-items: center;
-             z-index: 10000;
-             opacity: 0;
-             animation: fadeIn 0.3s ease forwards;
-         }
-         
-         .tech-modal {
-             background: white;
-             border-radius: 20px;
-             max-width: 600px;
-             width: 90%;
-             max-height: 80vh;
-             overflow-y: auto;
-             transform: scale(0.8);
-             animation: modalSlideIn 0.3s ease forwards;
-             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-         }
-         
-         .tech-modal-header {
-             padding: 25px 30px 20px;
-             border-bottom: 1px solid #eee;
-             display: flex;
-             justify-content: space-between;
-             align-items: center;
-             background: linear-gradient(135deg, #007bff, #0056b3);
-             color: white;
-             border-radius: 20px 20px 0 0;
-         }
-         
-         .tech-modal-header h3 {
-             margin: 0;
-             font-size: 24px;
-             font-weight: 600;
-         }
-         
-         .tech-modal-close {
-             background: none;
-             border: none;
-             color: white;
-             font-size: 20px;
-             cursor: pointer;
-             padding: 5px;
-             border-radius: 50%;
-             transition: background 0.3s ease;
-         }
-         
-         .tech-modal-close:hover {
-             background: rgba(255, 255, 255, 0.2);
-         }
-         
-         .tech-modal-body {
-             padding: 30px;
-         }
-         
-         .tech-modal-content h4 {
-             color: #007bff;
-             margin: 0 0 15px 0;
-             font-size: 18px;
-             font-weight: 600;
-         }
-         
-         .tech-modal-content p {
-             line-height: 1.6;
-             color: #555;
-             margin-bottom: 25px;
-         }
-         
-         .tech-modal-content ul {
-             list-style: none;
-             padding: 0;
-         }
-         
-         .tech-modal-content li {
-             padding: 8px 0;
-             display: flex;
-             align-items: center;
-             gap: 10px;
-             color: #333;
-         }
-         
-         .tech-modal-content li i {
-             color: #28a745;
-             font-size: 16px;
-         }
-         
-         @keyframes fadeIn {
-             to { opacity: 1; }
-         }
-         
-         @keyframes modalSlideIn {
-             to { transform: scale(1); }
-         }
-         
-         @media (max-width: 768px) {
-             .tech-modal {
-                 width: 95%;
-                 margin: 20px;
-             }
-             
-             .tech-modal-header {
-                 padding: 20px;
-             }
-             
-             .tech-modal-body {
-                 padding: 20px;
-             }
-         }
-     `;
-     document.head.appendChild(modalStyle);
-     
-     // 点击遮罩层关闭模态框
-     document.getElementById('techModal').addEventListener('click', (e) => {
-         if (e.target.classList.contains('tech-modal-overlay')) {
-             closeTechModal();
-         }
-     });
- }
- 
- // 关闭技术模态框
- function closeTechModal() {
-     const modal = document.getElementById('techModal');
-     if (modal) {
-         modal.style.animation = 'fadeOut 0.3s ease forwards';
-         setTimeout(() => {
-             modal.remove();
-         }, 300);
-     }
- }
- 
- // 添加关闭动画
- const closeAnimationStyle = document.createElement('style');
- closeAnimationStyle.textContent = `
-     @keyframes fadeOut {
-         to { opacity: 0; }
-     }
- `;
- document.head.appendChild(closeAnimationStyle);
 
-// 显示技术详情模态框
 function showTechModal(techData) {
     // 创建模态框
     const modal = document.createElement('div');
@@ -1621,14 +1625,26 @@ function showTechModal(techData) {
         <div class="tech-modal-content">
             <span class="tech-modal-close">&times;</span>
             <h3>${techData.title}</h3>
-            <p>${techData.description}</p>
-            <div class="tech-features-grid">
-                ${techData.features.map(feature => `
-                    <div class="feature-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>${feature}</span>
-                    </div>
-                `).join('')}
+            <div class="tech-description">
+                <h4>技术描述</h4>
+                <p>${techData.description}</p>
+            </div>
+            ${techData.workingPrinciple ? `
+                <div class="working-principle">
+                    <h4>工作原理</h4>
+                    <p>${techData.workingPrinciple}</p>
+                </div>
+            ` : ''}
+            <div class="tech-features">
+                <h4>技术特点</h4>
+                <div class="tech-features-grid">
+                    ${techData.features.map(feature => `
+                        <div class="feature-card">
+                            <i class="fas fa-check-circle"></i>
+                            <span>${feature}</span>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
         </div>
     `;
@@ -1648,6 +1664,126 @@ function showTechModal(techData) {
         opacity: 0;
         transition: opacity 0.3s ease;
     `;
+    
+    // 添加模态框内容样式
+    const modalStyle = document.createElement('style');
+    modalStyle.textContent = `
+        .tech-modal .tech-modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .tech-modal .tech-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            z-index: 1;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-modal .tech-modal-close:hover {
+            background: rgba(0,0,0,0.1);
+            color: #333;
+        }
+        
+        .tech-modal h3 {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            margin: 0;
+            padding: 25px 30px;
+            border-radius: 15px 15px 0 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .tech-modal .tech-description,
+        .tech-modal .working-principle,
+        .tech-modal .tech-features {
+            padding: 20px 30px;
+        }
+        
+        .tech-modal h4 {
+            color: #007bff;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .tech-modal p {
+            line-height: 1.6;
+            color: #555;
+            margin: 0 0 15px 0;
+        }
+        
+        .tech-modal .tech-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .tech-modal .feature-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .tech-modal .feature-card i {
+            color: #28a745;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        .tech-modal .feature-card span {
+            color: #333;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .tech-modal .tech-modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+            
+            .tech-modal h3 {
+                padding: 20px;
+                font-size: 20px;
+            }
+            
+            .tech-modal .tech-description,
+            .tech-modal .working-principle,
+            .tech-modal .tech-features {
+                padding: 15px 20px;
+            }
+            
+            .tech-modal .tech-features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    `;
+    document.head.appendChild(modalStyle);
     
     document.body.appendChild(modal);
     
